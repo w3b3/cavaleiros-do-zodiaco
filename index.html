@@ -18,7 +18,7 @@
       --red: #ff4d6d;
       --text: #e9ecff;
       --muted: #a3a9d1;
-      --card: rgba(20, 26, 66, .55);
+      --card: rgba(20, 26, 66, .65);
       --line: rgba(245, 197, 66, .25);
     }
 
@@ -61,15 +61,22 @@
     /* HERO */
     .hero {
       min-height: 100svh;
-      display: grid;
-      place-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 2rem;
+      padding: 3rem 1.5rem 4rem;
       position: relative
     }
 
+    .hero-content {
+      max-width: 800px;
+      margin: auto 0;
+    }
+
     .hero svg.emblem {
-      width: min(340px, 70vw);
+      width: min(320px, 68vw);
       height: auto;
       filter: drop-shadow(0 0 30px rgba(245, 197, 66, .45))
     }
@@ -115,14 +122,15 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.2rem, 6vw, 4.6rem);
-      margin-top: 1rem;
+      font-size: clamp(2.1rem, 5.5vw, 4.2rem);
+      margin-top: 1.25rem;
       background: linear-gradient(90deg, var(--gold2), var(--gold), #ff9d2e, var(--gold2));
       background-size: 300% 100%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      animation: shine 6s linear infinite
+      animation: shine 6s linear infinite;
+      line-height: 1.15;
     }
 
     @keyframes shine {
@@ -132,67 +140,99 @@
     }
 
     .hero p.sub {
-      max-width: 720px;
-      margin: 1rem auto 0;
+      max-width: 680px;
+      margin: 1.1rem auto 0;
       color: var(--muted);
-      font-size: clamp(1rem, 2vw, 1.2rem)
+      font-size: clamp(0.98rem, 2vw, 1.18rem);
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
     }
 
     .cta {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: .9rem 2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: .85rem 1.8rem;
       border: 1px solid var(--gold);
       border-radius: 999px;
       color: var(--gold);
       text-decoration: none;
       font-weight: 600;
+      font-size: 0.96rem;
       position: relative;
       overflow: hidden;
-      transition: .3s
+      transition: .3s;
+      min-height: 48px;
     }
 
-    .cta:hover {
+    .cta:hover, .cta:active {
       background: var(--gold);
       color: #1a1300;
       box-shadow: 0 0 30px var(--gold)
     }
 
+    .cta-secondary {
+      border-color: rgba(245, 197, 66, 0.4);
+      color: var(--gold2);
+      background: rgba(20, 26, 66, 0.4);
+    }
+
+    .cta-secondary:hover, .cta-secondary:active {
+      background: rgba(245, 197, 66, 0.2);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(245, 197, 66, 0.3);
+    }
+
     .scroll-ind {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 50%;
-      translate: -50% 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+      color: var(--gold);
+      text-decoration: none;
       animation: bob 2s ease-in-out infinite;
-      opacity: .7
+      opacity: .85;
+      padding: 0.5rem;
     }
 
     @keyframes bob {
+      0%, 100% {
+        transform: translateY(0)
+      }
       50% {
-        transform: translateY(10px)
+        transform: translateY(8px)
       }
     }
 
     section {
-      max-width: 1150px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 5rem 1.25rem
+      padding: 4.5rem 1.25rem
     }
 
     .sec-title {
       text-align: center;
-      margin-bottom: 3rem
+      margin-bottom: 2.5rem
     }
 
     .sec-title h2 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-size: clamp(1.75rem, 3.8vw, 2.6rem);
       color: var(--gold)
     }
 
     .sec-title p {
       color: var(--muted);
-      max-width: 680px;
-      margin: .5rem auto 0
+      max-width: 640px;
+      margin: .5rem auto 0;
+      font-size: 0.98rem;
     }
 
     .divider {
@@ -201,42 +241,162 @@
       width: 220px
     }
 
-    /* zodiac ring */
+    /* MARATHON TRACKER BAR */
+    .tracker-box {
+      background: rgba(20, 26, 66, .75);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 0 auto 2.5rem;
+      max-width: 680px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .tracker-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.92rem;
+    }
+
+    .tracker-title {
+      color: var(--gold2);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .tracker-count {
+      color: var(--muted);
+    }
+
+    .tracker-count strong {
+      color: var(--gold);
+      font-size: 1.05rem;
+    }
+
+    .tracker-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tracker-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), #ff9d2e);
+      border-radius: 999px;
+      transition: width 0.4s ease;
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    /* FILTER PILLS */
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2.75rem;
+    }
+
+    .pill {
+      background: rgba(20, 26, 66, 0.65);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 0.5rem 1.15rem;
+      font-size: 0.88rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      touch-action: manipulation;
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pill:hover,
+    .pill:active,
+    .pill.active {
+      color: #1a1300;
+      background: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 16px rgba(245, 197, 66, 0.45);
+    }
+
+    /* ZODIAC SNAP STRIP */
+    .zodiac-wrapper {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 0.75rem 0.25rem 2.25rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--line) transparent;
+      margin: 0 -0.5rem;
+    }
+
+    .zodiac-wrapper::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .zodiac-wrapper::-webkit-scrollbar-thumb {
+      background: var(--line);
+      border-radius: 3px;
+    }
+
     .zodiac {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem
+      display: flex;
+      gap: 1.1rem;
+      width: max-content;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
 
     .sign {
-      aspect-ratio: 1;
+      flex: 0 0 84px;
+      height: 84px;
+      scroll-snap-align: center;
       border: 1px solid var(--line);
       border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.85rem;
       color: var(--gold);
-      background: radial-gradient(circle, rgba(245, 197, 66, .08), transparent 70%);
-      transition: .4s;
-      position: relative
+      background: radial-gradient(circle, rgba(245, 197, 66, .09), transparent 70%);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
     }
 
     .sign span {
       position: absolute;
-      bottom: -1.6rem;
-      font-size: .72rem;
+      bottom: -1.5rem;
+      font-size: .74rem;
       color: var(--muted);
-      font-family: system-ui
+      font-family: system-ui;
+      white-space: nowrap;
     }
 
-    .sign:hover {
-      transform: translateY(-6px) scale(1.08);
-      box-shadow: 0 0 25px rgba(245, 197, 66, .5);
-      background: radial-gradient(circle, rgba(245, 197, 66, .3), transparent 70%)
+    .sign:hover,
+    .sign:active {
+      transform: translateY(-5px) scale(1.06);
+      box-shadow: 0 0 20px rgba(245, 197, 66, .45);
+      border-color: var(--gold);
+      background: radial-gradient(circle, rgba(245, 197, 66, .28), transparent 70%);
     }
 
-    /* timeline */
+    /* TIMELINE */
     .timeline {
       position: relative;
       padding-left: 0
@@ -256,7 +416,12 @@
     .item {
       position: relative;
       width: 50%;
-      padding: 0 2.5rem 3rem
+      padding: 0 2.5rem 3rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .item.hidden {
+      display: none;
     }
 
     .item:nth-child(odd) {
@@ -265,18 +430,20 @@
     }
 
     .item:nth-child(even) {
-      left: 50%
+      left: 50%;
+      text-align: left;
     }
 
     .node {
       position: absolute;
       top: .6rem;
-      width: 52px;
-      height: 52px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       display: grid;
       place-items: center;
       font-weight: 800;
+      font-size: 1rem;
       color: #1a1300;
       background: radial-gradient(circle at 35% 30%, var(--gold2), var(--gold) 55%, #b8860b);
       box-shadow: 0 0 0 4px var(--bg), 0 0 20px var(--gold);
@@ -284,22 +451,24 @@
     }
 
     .item:nth-child(odd) .node {
-      right: -26px
+      right: -24px
     }
 
     .item:nth-child(even) .node {
-      left: -26px
+      left: -24px
     }
 
     .card {
       background: var(--card);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 1.4rem 1.5rem;
-      transition: .35s;
+      transition: border-color .35s, box-shadow .35s, transform .35s, background .35s;
       position: relative;
-      overflow: hidden
+      overflow: hidden;
+      text-align: left; /* ensures card content is always easy to read left-to-right */
     }
 
     .card::after {
@@ -308,22 +477,52 @@
       inset: 0;
       background: linear-gradient(115deg, transparent 40%, rgba(255, 233, 163, .12) 50%, transparent 60%);
       translate: -100% 0;
-      transition: .8s
+      transition: .8s;
+      pointer-events: none;
     }
 
     .card:hover {
       border-color: var(--gold);
-      box-shadow: 0 10px 40px rgba(245, 197, 66, .18);
-      transform: translateY(-4px)
+      box-shadow: 0 10px 35px rgba(245, 197, 66, .18);
+      transform: translateY(-3px)
     }
 
     .card:hover::after {
       translate: 100% 0
     }
 
+    .card.is-watched {
+      border-color: rgba(245, 197, 66, 0.45);
+      background: rgba(26, 34, 76, 0.78);
+    }
+
+    .card.is-watched .watch-status-badge {
+      display: inline-flex;
+    }
+
+    /* CARD HEADER (Flexbox instead of floats) */
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.8rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-title-group {
+      flex: 1;
+    }
+
     .card h3 {
-      font-size: 1.3rem;
-      color: var(--gold2)
+      font-size: 1.28rem;
+      color: var(--gold2);
+      line-height: 1.3;
+    }
+
+    .card svg.ico {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
     }
 
     .tags {
@@ -331,18 +530,14 @@
       flex-wrap: wrap;
       gap: .4rem;
       margin: .6rem 0;
-      justify-content: inherit
-    }
-
-    .item:nth-child(odd) .tags {
-      justify-content: flex-end
     }
 
     .tag {
       font-size: .75rem;
       padding: .2rem .65rem;
       border-radius: 999px;
-      border: 1px solid currentColor
+      border: 1px solid currentColor;
+      line-height: 1.3;
     }
 
     .t-serie {
@@ -365,7 +560,8 @@
       color: #1a1300;
       background: var(--gold);
       border-color: var(--gold);
-      animation: pulseTag 2s infinite
+      animation: pulseTag 2s infinite;
+      font-weight: 600;
     }
 
     @keyframes pulseTag {
@@ -376,37 +572,82 @@
 
     .card p {
       color: var(--text);
-      opacity: .9;
-      font-size: .96rem
+      opacity: .92;
+      font-size: .95rem;
+      line-height: 1.55;
     }
 
     .when {
-      margin-top: .7rem;
-      font-size: .85rem;
-      color: var(--muted)
+      margin-top: .75rem;
+      font-size: .86rem;
+      color: var(--muted);
+      background: rgba(5, 6, 15, 0.35);
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+      border-left: 3px solid var(--gold);
     }
 
     .when b {
       color: var(--gold)
     }
 
-    .card svg.ico {
-      width: 46px;
-      height: 46px;
-      float: right;
-      margin-left: .6rem
+    /* WATCH ACTION FOOTER */
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(245, 197, 66, 0.14);
+      flex-wrap: wrap;
+      gap: 0.6rem;
     }
 
-    .item:nth-child(odd) .card svg.ico {
-      float: left;
-      margin: 0 .6rem 0 0
+    .watch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(20, 26, 66, 0.6);
+      border: 1px solid rgba(245, 197, 66, 0.3);
+      color: var(--muted);
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      touch-action: manipulation;
     }
 
-    /* reveal */
+    .watch-btn:hover,
+    .watch-btn:active {
+      border-color: var(--gold);
+      color: var(--gold2);
+      background: rgba(245, 197, 66, 0.12);
+    }
+
+    .watch-btn.is-watched {
+      background: rgba(245, 197, 66, 0.18);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .watch-status-badge {
+      display: none;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.75rem;
+      color: #4ee2b0;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* REVEAL ON SCROLL */
     .reveal {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity .9s ease, transform .9s ease
+      transform: translateY(35px);
+      transition: opacity .8s ease, transform .8s ease
     }
 
     .reveal.in {
@@ -414,11 +655,11 @@
       transform: none
     }
 
-    /* skip */
+    /* SKIP (O QUE DEIXAR FORA) */
     .skip-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.2rem
+      gap: 1.25rem
     }
 
     .skip {
@@ -427,55 +668,67 @@
       border-radius: 16px;
       padding: 1.3rem;
       position: relative;
-      transition: .35s
+      transition: transform .35s, border-color .35s, box-shadow .35s
     }
 
-    .skip:hover {
-      transform: rotate(-1deg) translateY(-4px);
+    .skip:hover,
+    .skip:active {
+      transform: translateY(-3px);
       border-color: var(--red);
-      box-shadow: 0 8px 30px rgba(255, 77, 109, .2)
+      box-shadow: 0 8px 30px rgba(255, 77, 109, .22)
     }
 
     .skip h3 {
       color: #ff8fa3;
       font-size: 1.15rem;
-      padding-right: 2.4rem
+      padding-right: 2.2rem;
+      line-height: 1.3;
     }
 
     .skip p {
       color: var(--muted);
-      font-size: .93rem;
-      margin-top: .4rem
+      font-size: .92rem;
+      margin-top: .45rem;
+      line-height: 1.5;
     }
 
     .skip svg {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
-      width: 30px;
-      height: 30px
+      top: 1.1rem;
+      right: 1.1rem;
+      width: 28px;
+      height: 28px
     }
 
-    /* stats */
+    /* STATS */
     .stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 1rem;
+      gap: 1.1rem;
       text-align: center
     }
 
     .stat {
-      padding: 1.5rem;
+      padding: 1.5rem 1rem;
       border: 1px solid var(--line);
       border-radius: 16px;
-      background: var(--card)
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .stat:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
     }
 
     .stat .n {
-      font-size: 2.6rem;
+      font-size: clamp(2.2rem, 4vw, 2.8rem);
       font-family: Georgia, serif;
       color: var(--gold);
-      font-weight: 700
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.3rem;
     }
 
     .stat .l {
@@ -485,16 +738,16 @@
 
     footer {
       text-align: center;
-      padding: 3rem 1rem 4rem;
+      padding: 3.5rem 1.25rem 4rem;
       color: var(--muted);
       font-size: .9rem;
       border-top: 1px solid var(--line)
     }
 
     footer svg {
-      width: 60px;
+      width: 54px;
       display: block;
-      margin: 0 auto 1rem
+      margin: 0 auto 1.2rem
     }
 
     #progress {
@@ -504,41 +757,136 @@
       height: 3px;
       background: linear-gradient(90deg, var(--gold), var(--red));
       width: 0;
-      z-index: 10;
+      z-index: 100;
       box-shadow: 0 0 10px var(--gold)
     }
 
-    @media (max-width:760px) {
+    /* RESPONSIVE & MOBILE DESIGN OVERHAUL */
+    @media (max-width: 768px) {
+      section {
+        padding: 3.5rem 1.1rem;
+      }
+
       .timeline::before {
-        left: 26px
+        left: 20px;
       }
 
       .item,
+      .item:nth-child(odd),
       .item:nth-child(even) {
         width: 100%;
         left: 0;
         text-align: left;
-        padding: 0 0 2.5rem 4.5rem
+        padding: 0 0 2rem 3.4rem; /* Reclaims 30px+ of horizontal space! */
       }
 
       .item:nth-child(odd) .node,
       .item:nth-child(even) .node {
         left: 0;
-        right: auto
+        right: auto;
+        width: 40px;
+        height: 40px;
+        font-size: 0.95rem;
       }
 
-      .item:nth-child(odd) .tags {
-        justify-content: flex-start
+      .item:nth-child(odd) .tags,
+      .item:nth-child(even) .tags {
+        justify-content: flex-start;
       }
 
-      .item:nth-child(odd) .card svg.ico {
-        float: right;
-        margin: 0 0 0 .6rem
+      .card {
+        padding: 1.2rem 1.2rem;
+        border-radius: 16px;
+      }
+
+      .card h3 {
+        font-size: 1.18rem;
+      }
+
+      .card svg.ico {
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 3rem 0.85rem;
+      }
+
+      .hero {
+        padding: 2rem 1rem 3rem;
+      }
+
+      .hero svg.emblem {
+        width: min(260px, 74vw);
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p.sub {
+        font-size: 0.95rem;
+      }
+
+      .timeline::before {
+        left: 17px;
+      }
+
+      .item,
+      .item:nth-child(odd),
+      .item:nth-child(even) {
+        padding: 0 0 1.65rem 2.8rem;
+      }
+
+      .item:nth-child(odd) .node,
+      .item:nth-child(even) .node {
+        width: 34px;
+        height: 34px;
+        font-size: 0.86rem;
+        top: 0.4rem;
+      }
+
+      .card {
+        padding: 1.05rem 1rem;
+        border-radius: 14px;
+      }
+
+      .card h3 {
+        font-size: 1.12rem;
+      }
+
+      .card svg.ico {
+        width: 32px;
+        height: 32px;
+      }
+
+      .pill {
+        padding: 0.4rem 0.9rem;
+        font-size: 0.82rem;
+        min-height: 36px;
+      }
+
+      .tracker-box {
+        padding: 1rem 1.1rem;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+
+      .stat {
+        padding: 1.1rem 0.75rem;
+      }
+
+      .stat .n {
+        font-size: 2.1rem;
       }
     }
 
     @media (prefers-reduced-motion:reduce) {
-
       *,
       *::before,
       *::after {
@@ -564,7 +912,7 @@
 
   <!-- HERO -->
   <header class="hero">
-    <div>
+    <div class="hero-content">
       <svg class="emblem" viewBox="0 0 400 400" role="img" aria-label="Emblema cósmico com as 12 casas do zodíaco">
         <defs>
           <radialGradient id="core" cx="50%" cy="50%" r="50%">
@@ -609,36 +957,103 @@
         </g>
       </svg>
       <h1>Cavaleiros do Zodíaco</h1>
-      <p class="sub">O roteiro definitivo para assistir em família: a linha clássica, os filmes antigos e os spin-offs
-        que realmente valem o seu cosmo — sem enrolação.</p>
-      <a class="cta" href="#roteiro">Queime seu cosmo ✦ Ver roteiro</a>
+      <p class="sub">O roteiro definitivo para maratonar em família: a linha clássica, os melhores filmes e os spin-offs de qualidade — sem episódios enrolados.</p>
+      <div class="hero-actions">
+        <a class="cta" href="#roteiro">Queime seu cosmo ✦ Ver roteiro</a>
+        <a class="cta cta-secondary" href="#casas">♈ As 12 Casas</a>
+      </div>
     </div>
-    <svg class="scroll-ind" width="28" height="44" viewBox="0 0 28 44" aria-hidden="true">
-      <rect x="1" y="1" width="26" height="42" rx="13" fill="none" stroke="#f5c542" stroke-width="2" />
-      <circle cx="14" cy="12" r="4" fill="#f5c542">
-        <animate attributeName="cy" values="12;28;12" dur="2s" repeatCount="indefinite" />
-      </circle>
-    </svg>
+    <a class="scroll-ind" href="#roteiro" aria-label="Rolar para o roteiro">
+      <svg width="24" height="28" viewBox="0 0 24 28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 4v16M5 13l7 7 7-7"/>
+      </svg>
+    </a>
   </header>
 
-  <!-- ROTEIRO -->
-  <section id="roteiro">
+  <!-- AS 12 CASAS DO ZODÍACO -->
+  <section id="casas">
     <div class="sec-title reveal">
-      <h2>Roteiro Recomendado</h2>
-      <p>Ordem equilibrada entre série clássica, filmes e spin-offs de alta qualidade de história e animação.</p>
+      <h2>As 12 Casas do Zodíaco</h2>
+      <p>Deslize pelos 12 signos de ouro que guardam o caminho sagrado até a Sala do Grande Mestre.</p>
       <svg class="divider" viewBox="0 0 220 20" aria-hidden="true">
         <path d="M0 10 H90 M130 10 H220" stroke="#f5c542" stroke-width="1.5" />
         <path d="M110 2 L118 10 L110 18 L102 10Z" fill="#f5c542" />
       </svg>
     </div>
+    <div class="zodiac-wrapper reveal">
+      <div class="zodiac" id="zodiac"></div>
+    </div>
+  </section>
+
+  <!-- ROTEIRO RECOMENDADO -->
+  <section id="roteiro">
+    <div class="sec-title reveal">
+      <h2>Roteiro Recomendado</h2>
+      <p>Ordem cronológica ideal entre série clássica, filmes e spin-offs de alto padrão.</p>
+      <svg class="divider" viewBox="0 0 220 20" aria-hidden="true">
+        <path d="M0 10 H90 M130 10 H220" stroke="#f5c542" stroke-width="1.5" />
+        <path d="M110 2 L118 10 L110 18 L102 10Z" fill="#f5c542" />
+      </svg>
+    </div>
+
+    <!-- PAINEL DE PROGRESSO DA MARATONA -->
+    <div class="tracker-box reveal">
+      <div class="tracker-header">
+        <span class="tracker-title">⚡ Progresso da Família</span>
+        <span class="tracker-count"><strong id="tracker-completed">0</strong> de <span id="tracker-total">11</span> assistidos</span>
+      </div>
+      <div class="tracker-bar">
+        <div class="tracker-fill" id="tracker-fill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="filter-pills reveal" role="tablist" aria-label="Filtrar tipo de título">
+      <button class="pill active" data-filter="all">✦ Todos (11)</button>
+      <button class="pill" data-filter="serie">📺 Sagas Principais</button>
+      <button class="pill" data-filter="filme">🎬 Filmes Clássicos</button>
+      <button class="pill" data-filter="ova">🌌 Hades & Lost Canvas</button>
+      <button class="pill" data-filter="ona">⚔️ Alma de Ouro</button>
+    </div>
+
     <div class="timeline" id="timeline"></div>
+  </section>
+
+  <!-- ESTATÍSTICAS DA MARATONA -->
+  <section id="stats">
+    <div class="sec-title reveal">
+      <h2>O Cosmo em Números</h2>
+      <p>A dimensão da jornada épica dos Cavaleiros de Atena.</p>
+      <svg class="divider" viewBox="0 0 220 20" aria-hidden="true">
+        <path d="M0 10 H90 M130 10 H220" stroke="#f5c542" stroke-width="1.5" />
+        <path d="M110 2 L118 10 L110 18 L102 10Z" fill="#f5c542" />
+      </svg>
+    </div>
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="n" data-count="114">0</div>
+        <div class="l">Episódios Clássicos</div>
+      </div>
+      <div class="stat">
+        <div class="n" data-count="4">0</div>
+        <div class="l">Filmes Clássicos</div>
+      </div>
+      <div class="stat">
+        <div class="n" data-count="31">0</div>
+        <div class="l">Episódios de Hades (OVAs)</div>
+      </div>
+      <div class="stat">
+        <div class="n" data-count="11">0</div>
+        <div class="l">Títulos no Guia</div>
+      </div>
+    </div>
   </section>
 
   <!-- DEIXAR FORA -->
   <section>
     <div class="sec-title reveal">
       <h2 style="color:#ff8fa3">O que Deixar Fora</h2>
-      <p>…ou assistir sem expectativas.</p>
+      <p>…ou assistir somente se bater muita curiosidade sem expectativas.</p>
       <svg class="divider" viewBox="0 0 220 20" aria-hidden="true">
         <path d="M0 10 H90 M130 10 H220" stroke="#ff4d6d" stroke-width="1.5" />
         <path d="M110 2 L118 10 L110 18 L102 10Z" fill="#ff4d6d" />
@@ -655,104 +1070,290 @@
           repeatCount="indefinite" />
       </path>
     </svg>
-    Página de fã, sem fins lucrativos. <em>Saint Seiya</em> © Masami Kurumada / Toei Animation.<br>Bom maratona — e que
+    Página de fã, sem fins lucrativos. <em>Saint Seiya</em> © Masami Kurumada / Toei Animation.<br>Boa maratona — e que
     Atena proteja o sofá!
   </footer>
 
   <script>
     // ===== Dados =====
     const icons = {
-      serie: `<svg class="ico" viewBox="0 0 48 48"><rect x="4" y="9" width="40" height="28" rx="4" fill="none" stroke="#7aa8ff" stroke-width="2.5"/><path d="M16 43h16M24 37v6" stroke="#7aa8ff" stroke-width="2.5"/><path d="M20 17l10 6-10 6z" fill="#7aa8ff"><animate attributeName="opacity" values="1;.4;1" dur="1.6s" repeatCount="indefinite"/></path></svg>`,
-      filme: `<svg class="ico" viewBox="0 0 48 48"><g fill="none" stroke="#ff4d6d" stroke-width="2.5"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="3"/><g><circle cx="24" cy="13" r="4"/><circle cx="24" cy="35" r="4"/><circle cx="13" cy="24" r="4"/><circle cx="35" cy="24" r="4"/><animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="6s" repeatCount="indefinite"/></g></g></svg>`,
-      ova: `<svg class="ico" viewBox="0 0 48 48"><path d="M24 4 L28 18 L42 18 L31 27 L35 42 L24 33 L13 42 L17 27 L6 18 L20 18Z" fill="none" stroke="#9b6bff" stroke-width="2.5"><animateTransform attributeName="transform" type="scale" values="1;1.06;1" dur="2s" additive="sum" repeatCount="indefinite"/></path></svg>`,
-      ona: `<svg class="ico" viewBox="0 0 48 48"><path d="M8 40 L14 14 L24 24 L34 14 L40 40Z" fill="none" stroke="#4ee2b0" stroke-width="2.5" stroke-linejoin="round"/><circle cx="14" cy="11" r="3" fill="#4ee2b0"/><circle cx="34" cy="11" r="3" fill="#4ee2b0"/><circle cx="24" cy="21" r="3" fill="#4ee2b0"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle></svg>`
+      serie: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="9" width="40" height="28" rx="4" fill="none" stroke="#7aa8ff" stroke-width="2.5"/><path d="M16 43h16M24 37v6" stroke="#7aa8ff" stroke-width="2.5"/><path d="M20 17l10 6-10 6z" fill="#7aa8ff"><animate attributeName="opacity" values="1;.4;1" dur="1.6s" repeatCount="indefinite"/></path></svg>`,
+      filme: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#ff4d6d" stroke-width="2.5"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="3"/><g><circle cx="24" cy="13" r="4"/><circle cx="24" cy="35" r="4"/><circle cx="13" cy="24" r="4"/><circle cx="35" cy="24" r="4"/><animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="6s" repeatCount="indefinite"/></g></g></svg>`,
+      ova: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 L28 18 L42 18 L31 27 L35 42 L24 33 L13 42 L17 27 L6 18 L20 18Z" fill="none" stroke="#9b6bff" stroke-width="2.5"><animateTransform attributeName="transform" type="scale" values="1;1.06;1" dur="2s" additive="sum" repeatCount="indefinite"/></path></svg>`,
+      ona: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40 L14 14 L24 24 L34 14 L40 40Z" fill="none" stroke="#4ee2b0" stroke-width="2.5" stroke-linejoin="round"/><circle cx="14" cy="11" r="3" fill="#4ee2b0"/><circle cx="34" cy="11" r="3" fill="#4ee2b0"/><circle cx="24" cy="21" r="3" fill="#4ee2b0"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle></svg>`
     };
+
     const roteiro = [
-      { t: "Saga do Santuário", here: true, k: "serie", f: "Série clássica · ep. 1 a 73", p: "O coração da franquia: torneio galáctico, cavaleiros negros/prata e a subida das 12 Casas.", w: "Ponto de partida." },
-      { t: "Filme 1: O Santo Guerreiro (Éris)", k: "filme", f: "Filme · 45 min", p: "Rápido, divertido e nostálgico; Seiya e os amigos enfrentam a Deusa da Discórdia.", w: "Logo após as 12 Casas (sessão de transição)." },
-      { t: "Filme 2: A Grande Batalha dos Deuses", k: "filme", f: "Filme · 45 min", p: "Batalha na neve contra guerreiros de Asgard; serviu de protótipo visual para a saga seguinte.", w: "Logo antes de iniciar Asgard." },
-      { t: "Saga de Asgard", k: "serie", f: "Série clássica · ep. 74 a 99", p: "Apesar de não existir no mangá, tem os Guerreiros Deuses com as histórias de fundo mais dramáticas e bem escritas do anime.", w: "Sequência direta do Santuário." },
-      { t: "Saga de Poseidon", k: "serie", f: "Série clássica · ep. 100 a 114", p: "Conflito no fundo do mar contra os Generais Marinas; encerra a era exibida na TV Manchete nos anos 90.", w: "Logo após Asgard." },
-      { t: "Filme 3: A Lenda dos Defensores de Atena (Abel)", k: "filme", f: "Filme · 75 min", p: "O ápice técnico do traço clássico de Shingo Araki; Cavaleiros de Ouro ressuscitados, batalhas dinâmicas e trilha sonora impecável.", w: "Logo após Poseidon (melhor momento para assistir)." },
-      { t: "Filme 4: Os Guerreiros do Armagedon (Lúcifer)", k: "filme", f: "Filme · 45 min", p: "Filme curto e sombrio; encerra o ciclo de longas clássicos dos anos 80/90.", w: "Opcional, antes de Hades." },
-      { t: "Saga de Hades: Santuário", k: "ova", f: "OVA · 13 episódios", p: "O auge da animação clássica remasterizada; foco massivo nas lutas táticas e dramas dos Cavaleiros de Ouro.", w: "Imediatamente após Poseidon / filmes clássicos." },
-      { t: "Saga de Hades: Inferno e Elíseos", k: "ova", f: "OVA · 18 episódios (12 Inferno + 6 Elíseos)", p: "Encerramento definitivo da história clássica original, levando a batalha até a morada final de Hades.", w: "Sequência de Hades Santuário." },
-      { t: "Alma de Ouro (Soul of Gold)", k: "ona", f: "Série/ONA · 13 episódios", p: "A série que você começou: foca exclusivamente nos 12 Cavaleiros de Ouro com armaduras divinas em Asgard.", w: "Após o episódio 12 de Hades Inferno (ou após concluir Hades)." },
-      { t: "The Lost Canvas", k: "ova", f: "Série de OVAs · 26 episódios", p: "A Guerra Santa anterior (século XVIII); animação da TMS muito acima da média, Cavaleiros de Ouro com atuações de destaque e narrativa envolvente.", w: "Assistir como prequela independente após terminar o clássico." }
+      { id: "santuario", t: "Saga do Santuário", here: true, k: "serie", f: "Série clássica · ep. 1 a 73", p: "O coração da franquia: torneio galáctico, cavaleiros negros/prata e a subida inesquecível das 12 Casas.", w: "Ponto de partida oficial da jornada." },
+      { id: "filme-eris", t: "Filme 1: O Santo Guerreiro (Éris)", k: "filme", f: "Filme · 45 min", p: "Rápido, divertido e nostálgico; Seiya e os amigos enfrentam a Deusa da Discórdia.", w: "Logo após as 12 Casas (sessão leve de transição)." },
+      { id: "filme-asgard", t: "Filme 2: A Grande Batalha dos Deuses", k: "filme", f: "Filme · 45 min", p: "Batalha na neve contra guerreiros de Asgard; serviu de protótipo visual para a saga seguinte.", w: "Logo antes de iniciar a Saga de Asgard." },
+      { id: "saga-asgard", t: "Saga de Asgard", k: "serie", f: "Série clássica · ep. 74 a 99", p: "Apesar de não existir no mangá, tem os Guerreiros Deuses com as histórias de fundo mais dramáticas e bem escritas do anime.", w: "Sequência direta do Santuário." },
+      { id: "saga-poseidon", t: "Saga de Poseidon", k: "serie", f: "Série clássica · ep. 100 a 114", p: "Conflito nos pilares dos sete mares contra os Generais Marinas; encerra a era de ouro exibida na TV Manchete.", w: "Logo após Asgard." },
+      { id: "filme-abel", t: "Filme 3: A Lenda dos Defensores de Atena (Abel)", k: "filme", f: "Filme · 75 min", p: "O ápice técnico do traço de Shingo Araki: Cavaleiros de Ouro ressuscitados, ritmo dinâmico e trilha sonora impecável.", w: "Logo após Poseidon (melhor filme da franquia)." },
+      { id: "filme-lucifer", t: "Filme 4: Os Guerreiros do Armagedon (Lúcifer)", k: "filme", f: "Filme · 45 min", p: "Filme curto e sombrio; encerra o ciclo de longas clássicos dos anos 80/90.", w: "Opcional, antes de entrar na fase Hades." },
+      { id: "hades-santuario", t: "Saga de Hades: Santuário", k: "ova", f: "OVA · 13 episódios", p: "O ápice da animação moderna remasterizada; foco total nas lutas táticas e dramas profundos dos Cavaleiros de Ouro.", w: "Imediatamente após Poseidon / Abel." },
+      { id: "hades-inferno-eliseos", t: "Saga de Hades: Inferno e Elíseos", k: "ova", f: "OVA · 18 episódios", p: "Encerramento definitivo da história clássica original, levando a guerra santa até o coração do Submundo.", w: "Sequência direta de Hades Santuário." },
+      { id: "soul-of-gold", t: "Alma de Ouro (Soul of Gold)", k: "ona", f: "Série/ONA · 13 episódios", p: "Foca exclusivamente nos 12 Cavaleiros de Ouro com armaduras divinas em Asgard.", w: "Após o ep. 12 de Hades Inferno (ou após concluir Hades)." },
+      { id: "lost-canvas", t: "The Lost Canvas", k: "ova", f: "Série de OVAs · 26 episódios", p: "A Guerra Santa anterior (século XVIII); animação da TMS muito acima da média e Cavaleiros de Ouro em momentos lendários.", w: "Assistir como prequela independente após terminar o clássico." }
     ];
+
     const skip = [
-      ["Prólogo do Céu (Filme 5)", "Ritmo lento, tom excessivamente melancólico e pontas soltas deixadas pelo cancelamento da trilogia planejada na época."],
-      ["Omega", "Mais de 90 episódios; traço bastante infantilizado na primeira fase e muitas inconsistências com a mitologia original."],
-      ["Série 3D (Netflix / Crunchyroll)", "Reformulações controversas da trama (como veículos militares enfrentando cavaleiros) e ritmo acelerado que perde o impacto dramático do original."],
-      ["Live-action (Knights of the Zodiac, 2023)", "Adaptação ocidental com pouca fidelidade ao espírito do anime clássico."],
-      ["Saintia Shô", "Teve cortes expressivos de orçamento e adaptação muito resumida em relação ao mangá."]
+      ["Prólogo do Céu (Filme 5)", "Ritmo arrastado, tom excessivamente melancólico e pontas soltas deixadas pelo cancelamento da trilogia planejada na época."],
+      ["Omega", "Mais de 90 episódios; traço bastante infantilizado na primeira fase e muitas inconsistências com a mitologia clássica."],
+      ["Série 3D (Netflix / Crunchyroll)", "Reformulações controversas da trama (como veículos militares enfrentando cavaleiros) e ritmo acelerado que perde a dramaticidade."],
+      ["Live-action (Knights of the Zodiac, 2023)", "Adaptação ocidental com pouca fidelidade ao espírito e à estética do anime original."],
+      ["Saintia Shô", "Teve cortes expressivos de orçamento e adaptação extremamente resumida em relação ao excelente mangá."]
     ];
-    const signs = [["♈", "Áries"], ["♉", "Touro"], ["♊", "Gêmeos"], ["♋", "Câncer"], ["♌", "Leão"], ["♍", "Virgem"], ["♎", "Libra"], ["♏", "Escorpião"], ["♐", "Sagitário"], ["♑", "Capricórnio"], ["♒", "Aquário"], ["♓", "Peixes"]];
+
+    const signs = [
+      ["♈", "Áries"], ["♉", "Touro"], ["♊", "Gêmeos"], ["♋", "Câncer"],
+      ["♌", "Leão"], ["♍", "Virgem"], ["♎", "Libra"], ["♏", "Escorpião"],
+      ["♐", "Sagitário"], ["♑", "Capricórnio"], ["♒", "Aquário"], ["♓", "Peixes"]
+    ];
+
     const labels = { serie: "Série", filme: "Filme", ova: "OVA", ona: "ONA" };
 
-    // ===== Render =====
-    document.getElementById("timeline").innerHTML = roteiro.map((r, i) => `
-  <div class="item reveal">
-    <div class="node">${i + 1}</div>
-    <article class="card">
-      ${icons[r.k]}
-      <h3>${r.t}</h3>
-      <div class="tags"><span class="tag t-${r.k}">${labels[r.k]}</span><span class="tag" style="color:var(--muted)">${r.f}</span>${r.here ? '<span class="tag here">vocês estão aqui</span>' : ''}</div>
-      <p>${r.p}</p>
-      <div class="when"><b>Onde encaixar:</b> ${r.w}</div>
-    </article>
-  </div>`).join("");
-    const x = `<svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="#ff4d6d" stroke-width="2"/><path d="M10 10l10 10M20 10L10 20" stroke="#ff4d6d" stroke-width="2.5" stroke-linecap="round"/></svg>`;
-    document.getElementById("skip").innerHTML = skip.map(([t, p]) => `<div class="skip reveal">${x}<h3>${t}</h3><p>${p}</p></div>`).join("");
-    document.getElementById("zodiac").innerHTML = signs.map(([g, n]) => `<div class="sign" title="Casa de ${n}">${g}<span>${n}</span></div>`).join("");
+    // ===== Persistência de Progresso (Local Storage) =====
+    const STORAGE_KEY = "ss_watched_ids";
+    function getWatched() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+    function saveWatched(list) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      } catch (e) {}
+    }
+
+    function updateTrackerUI() {
+      const watched = getWatched();
+      const total = roteiro.length;
+      const count = watched.length;
+      const pct = Math.round((count / total) * 100);
+
+      const countEl = document.getElementById("tracker-completed");
+      const totalEl = document.getElementById("tracker-total");
+      const fillEl = document.getElementById("tracker-fill");
+
+      if (countEl) countEl.textContent = count;
+      if (totalEl) totalEl.textContent = total;
+      if (fillEl) fillEl.style.width = pct + "%";
+
+      roteiro.forEach(r => {
+        const card = document.getElementById(`card-${r.id}`);
+        const btn = document.getElementById(`btn-${r.id}`);
+        const isWatched = watched.includes(r.id);
+        if (card) {
+          card.classList.toggle("is-watched", isWatched);
+        }
+        if (btn) {
+          btn.classList.toggle("is-watched", isWatched);
+          btn.innerHTML = isWatched 
+            ? `✓ Assistido` 
+            : `Marcar como visto`;
+          btn.setAttribute("aria-pressed", isWatched);
+        }
+      });
+    }
+
+    window.toggleWatched = function(id) {
+      let watched = getWatched();
+      if (watched.includes(id)) {
+        watched = watched.filter(x => x !== id);
+      } else {
+        watched.push(id);
+      }
+      saveWatched(watched);
+      updateTrackerUI();
+    };
+
+    // ===== Render da Timeline =====
+    const timelineEl = document.getElementById("timeline");
+    if (timelineEl) {
+      timelineEl.innerHTML = roteiro.map((r, i) => `
+        <div class="item reveal" data-type="${r.k}" id="item-${r.id}">
+          <div class="node">${i + 1}</div>
+          <article class="card" id="card-${r.id}">
+            <div class="card-head">
+              <div class="card-title-group">
+                <h3>${r.t}</h3>
+                <div class="tags">
+                  <span class="tag t-${r.k}">${labels[r.k]}</span>
+                  <span class="tag" style="color:var(--muted)">${r.f}</span>
+                  ${r.here ? '<span class="tag here">vocês estão aqui</span>' : ''}
+                </div>
+              </div>
+              ${icons[r.k]}
+            </div>
+            <p>${r.p}</p>
+            <div class="when"><b>Onde encaixar:</b> ${r.w}</div>
+            <div class="card-footer">
+              <button class="watch-btn" id="btn-${r.id}" onclick="toggleWatched('${r.id}')" aria-pressed="false">
+                Marcar como visto
+              </button>
+              <span class="watch-status-badge">✦ Concluído</span>
+            </div>
+          </article>
+        </div>`).join("");
+    }
+
+    // ===== Filtro de Categorias =====
+    const filterButtons = document.querySelectorAll(".filter-pills .pill");
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filter = btn.dataset.filter;
+
+        document.querySelectorAll(".timeline .item").forEach(item => {
+          if (filter === "all" || item.dataset.type === filter) {
+            item.classList.remove("hidden");
+          } else {
+            item.classList.add("hidden");
+          }
+        });
+      });
+    });
+
+    // ===== Render de "O que Deixar Fora" =====
+    const skipEl = document.getElementById("skip");
+    if (skipEl) {
+      const xIco = `<svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="#ff4d6d" stroke-width="2"/><path d="M10 10l10 10M20 10L10 20" stroke="#ff4d6d" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+      skipEl.innerHTML = skip.map(([t, p]) => `<div class="skip reveal">${xIco}<h3>${t}</h3><p>${p}</p></div>`).join("");
+    }
+
+    // ===== Render dos Signos do Zodíaco =====
+    const zodiacEl = document.getElementById("zodiac");
+    if (zodiacEl) {
+      zodiacEl.innerHTML = signs.map(([g, n]) => `
+        <div class="sign" title="Casa de ${n}" tabindex="0" role="button" aria-label="Casa de ${n}">
+          ${g}<span>${n}</span>
+        </div>`).join("");
+    }
 
     // SVG emblem ticks & glyphs
-    const NS = "http://www.w3.org/2000/svg", ticks = document.getElementById("ticks"), glyphs = document.getElementById("glyphs");
-    for (let i = 0; i < 72; i++) {
-      const a = i * 5 * Math.PI / 180, r1 = i % 6 ? 163 : 155, l = document.createElementNS(NS, "line");
-      l.setAttribute("x1", 200 + Math.cos(a) * r1); l.setAttribute("y1", 200 + Math.sin(a) * r1); l.setAttribute("x2", 200 + Math.cos(a) * 170); l.setAttribute("y2", 200 + Math.sin(a) * 170); l.setAttribute("stroke-width", i % 6 ? 1 : 2); ticks.appendChild(l);
-    }
-    signs.forEach(([g], i) => { const a = (i * 30 - 90) * Math.PI / 180, t = document.createElementNS(NS, "text"); t.setAttribute("x", 200 + Math.cos(a) * 140); t.setAttribute("y", 200 + Math.sin(a) * 140 + 8); t.textContent = g; glyphs.appendChild(t); });
+    const NS = "http://www.w3.org/2000/svg";
+    const ticks = document.getElementById("ticks");
+    const glyphs = document.getElementById("glyphs");
 
-    // Reveal + counters
-    const io = new IntersectionObserver(es => es.forEach(e => {
-      if (!e.isIntersecting) return; e.target.classList.add("in");
-      const n = e.target.querySelector("[data-count]"); if (n) {
-        const end = +n.dataset.count, t0 = performance.now();
-        const step = t => { const p = Math.min((t - t0) / 1400, 1); n.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step) }; requestAnimationFrame(step);
+    if (ticks) {
+      for (let i = 0; i < 72; i++) {
+        const a = i * 5 * Math.PI / 180, r1 = i % 6 ? 163 : 155, l = document.createElementNS(NS, "line");
+        l.setAttribute("x1", 200 + Math.cos(a) * r1);
+        l.setAttribute("y1", 200 + Math.sin(a) * r1);
+        l.setAttribute("x2", 200 + Math.cos(a) * 170);
+        l.setAttribute("y2", 200 + Math.sin(a) * 170);
+        l.setAttribute("stroke-width", i % 6 ? 1 : 2);
+        ticks.appendChild(l);
       }
+    }
+
+    if (glyphs) {
+      signs.forEach(([g], i) => {
+        const a = (i * 30 - 90) * Math.PI / 180;
+        const t = document.createElementNS(NS, "text");
+        t.setAttribute("x", 200 + Math.cos(a) * 140);
+        t.setAttribute("y", 200 + Math.sin(a) * 140 + 8);
+        t.textContent = g;
+        glyphs.appendChild(t);
+      });
+    }
+
+    // Inicializar rastreador
+    updateTrackerUI();
+
+    // Reveal on scroll + Contadores Numéricos
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add("in");
+      const counters = e.target.querySelectorAll("[data-count]");
+      counters.forEach(n => {
+        if (n && !n.dataset.animated) {
+          n.dataset.animated = "true";
+          const end = +n.dataset.count, t0 = performance.now();
+          const step = t => {
+            const p = Math.min((t - t0) / 1400, 1);
+            n.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+            if (p < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        }
+      });
       io.unobserve(e.target);
-    }), { threshold: .15 });
+    }), { threshold: .12 });
+
     document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-    // Progress bar
-    addEventListener("scroll", () => { const h = document.documentElement; document.getElementById("progress").style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + "%" }, { passive: true });
+    // Barra de Progresso no Topo
+    addEventListener("scroll", () => {
+      const h = document.documentElement;
+      const progress = document.getElementById("progress");
+      if (progress) {
+        progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + "%";
+      }
+    }, { passive: true });
 
-    // Starfield
-    const c = document.getElementById("stars"), ctx = c.getContext("2d"); let S = [], W, H;
-    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    function resize() {
-      W = c.width = innerWidth * devicePixelRatio; H = c.height = innerHeight * devicePixelRatio; c.style.width = innerWidth + "px"; c.style.height = innerHeight + "px";
-      S = Array.from({ length: Math.min(260, innerWidth / 4) }, () => ({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.6 * devicePixelRatio + .3, v: Math.random() * .25 + .05, p: Math.random() * 6 }));
-    }
-    let shoot = null;
-    function frame(t) {
-      ctx.clearRect(0, 0, W, H);
-      for (const s of S) {
-        const a = .5 + .5 * Math.sin(t / 700 + s.p); ctx.fillStyle = `rgba(255,${230 + a * 25 | 0},${180 + a * 75 | 0},${.3 + a * .7})`; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 7); ctx.fill();
-        if (!reduce) { s.y += s.v; if (s.y > H) s.y = 0; }
+    // Fundo Estelar Cósmico
+    const c = document.getElementById("stars");
+    if (c) {
+      const ctx = c.getContext("2d");
+      let S = [], W, H;
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function resize() {
+        W = c.width = innerWidth * devicePixelRatio;
+        H = c.height = innerHeight * devicePixelRatio;
+        c.style.width = innerWidth + "px";
+        c.style.height = innerHeight + "px";
+        S = Array.from({ length: Math.min(260, innerWidth / 4) }, () => ({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          r: Math.random() * 1.6 * devicePixelRatio + .3,
+          v: Math.random() * .25 + .05,
+          p: Math.random() * 6
+        }));
       }
-      if (!reduce) {
-        if (!shoot && Math.random() < .006) shoot = { x: Math.random() * W, y: Math.random() * H * .4, l: 0 };
-        if (shoot) {
-          shoot.l += 14; const g = ctx.createLinearGradient(shoot.x + shoot.l, shoot.y + shoot.l * .5, shoot.x + shoot.l - 140, shoot.y + shoot.l * .5 - 70);
-          g.addColorStop(0, "rgba(255,233,163,1)"); g.addColorStop(1, "rgba(255,233,163,0)"); ctx.strokeStyle = g; ctx.lineWidth = 2 * devicePixelRatio; ctx.beginPath();
-          ctx.moveTo(shoot.x + shoot.l, shoot.y + shoot.l * .5); ctx.lineTo(shoot.x + shoot.l - 140, shoot.y + shoot.l * .5 - 70); ctx.stroke(); if (shoot.l > 600) shoot = null;
+
+      let shoot = null;
+      function frame(t) {
+        ctx.clearRect(0, 0, W, H);
+        for (const s of S) {
+          const a = .5 + .5 * Math.sin(t / 700 + s.p);
+          ctx.fillStyle = `rgba(255,${230 + a * 25 | 0},${180 + a * 75 | 0},${.3 + a * .7})`;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, 7);
+          ctx.fill();
+          if (!reduce) {
+            s.y += s.v;
+            if (s.y > H) s.y = 0;
+          }
         }
+        if (!reduce) {
+          if (!shoot && Math.random() < .006) shoot = { x: Math.random() * W, y: Math.random() * H * .4, l: 0 };
+          if (shoot) {
+            shoot.l += 14;
+            const g = ctx.createLinearGradient(shoot.x + shoot.l, shoot.y + shoot.l * .5, shoot.x + shoot.l - 140, shoot.y + shoot.l * .5 - 70);
+            g.addColorStop(0, "rgba(255,233,163,1)");
+            g.addColorStop(1, "rgba(255,233,163,0)");
+            ctx.strokeStyle = g;
+            ctx.lineWidth = 2 * devicePixelRatio;
+            ctx.beginPath();
+            ctx.moveTo(shoot.x + shoot.l, shoot.y + shoot.l * .5);
+            ctx.lineTo(shoot.x + shoot.l - 140, shoot.y + shoot.l * .5 - 70);
+            ctx.stroke();
+            if (shoot.l > 600) shoot = null;
+          }
+        }
+        requestAnimationFrame(frame);
       }
+
+      addEventListener("resize", resize);
+      resize();
       requestAnimationFrame(frame);
     }
-    addEventListener("resize", resize); resize(); requestAnimationFrame(frame);
   </script>
 </body>
 
