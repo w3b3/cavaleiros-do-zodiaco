@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cavaleiros do Zodíaco — Roteiro para Assistir em Família</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cavaleiros do Zodíaco — Roteiro em Família (Slides)</title>
   <meta name="description"
-    content="O roteiro definitivo para assistir Cavaleiros do Zodíaco em família: sagas clássicas, filmes e spin-offs de qualidade.">
+    content="O roteiro definitivo para maratonar Cavaleiros do Zodíaco em família em formato de slides: cada título tem seu próprio slide.">
   <style>
     :root {
       --bg: #05060f;
@@ -16,114 +16,232 @@
       --cosmo: #7aa8ff;
       --violet: #9b6bff;
       --red: #ff4d6d;
+      --mint: #4ee2b0;
       --text: #e9ecff;
       --muted: #a3a9d1;
-      --card: rgba(20, 26, 66, .65);
-      --line: rgba(245, 197, 66, .25);
+      --card: rgba(18, 23, 62, 0.72);
+      --card-border: rgba(245, 197, 66, 0.28);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
-      padding: 0
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    html {
-      scroll-behavior: smooth
-    }
-
+    html,
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: radial-gradient(ellipse at top, #141a4a 0%, var(--bg) 60%) fixed;
+      width: 100%;
+      height: 100%;
+      height: 100dvh;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 50% 20%, #161c52 0%, var(--bg) 75%) fixed;
       color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
     }
 
     h1,
     h2,
     h3 {
       font-family: Georgia, "Times New Roman", serif;
-      letter-spacing: .02em
+      letter-spacing: .015em;
     }
 
-    a {
-      color: var(--gold)
-    }
-
+    /* BACKGROUND STARS */
     #stars {
       position: fixed;
       inset: 0;
-      z-index: -1;
-      pointer-events: none
+      z-index: 0;
+      pointer-events: none;
     }
 
-    /* HERO */
-    .hero {
-      min-height: 100svh;
+    /* TOP PROGRESS & HEADER BAR */
+    #top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 56px;
+      padding: 0 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      background: rgba(5, 6, 15, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(245, 197, 66, 0.15);
+    }
+
+    #progress-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), #ff9d2e, var(--red));
+      box-shadow: 0 0 10px var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      font-size: 1.1rem;
+    }
+
+    .top-center {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .slide-num-pill {
+      background: rgba(245, 197, 66, 0.12);
+      border: 1px solid rgba(245, 197, 66, 0.25);
+      color: var(--gold2);
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .icon-btn {
+      background: rgba(20, 26, 66, 0.6);
+      border: 1px solid var(--card-border);
+      color: var(--gold2);
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.25s ease;
+    }
+
+    .icon-btn:hover,
+    .icon-btn:active {
+      background: var(--gold);
+      color: #1a1300;
+      border-color: var(--gold);
+    }
+
+    /* DECK & SLIDES */
+    #deck {
+      position: fixed;
+      top: 56px;
+      bottom: 64px;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 3rem 1.5rem 4rem;
-      position: relative
+      padding: 1.5rem 1.25rem;
+      opacity: 0;
+      transform: translateX(40px) scale(0.98);
+      pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                  transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
-    .hero-content {
-      max-width: 800px;
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .slide.prev {
+      transform: translateX(-40px) scale(0.98);
+    }
+
+    .slide-inner {
+      width: 100%;
+      max-width: 860px;
       margin: auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
     }
 
-    .hero svg.emblem {
-      width: min(320px, 68vw);
-      height: auto;
-      filter: drop-shadow(0 0 30px rgba(245, 197, 66, .45))
+    /* TITLE SLIDE (SLIDE 0) */
+    .title-slide .slide-inner {
+      text-align: center;
+      align-items: center;
+      max-width: 780px;
+      gap: 1.5rem;
+    }
+
+    .emblem-wrap {
+      position: relative;
+      width: min(240px, 55vw);
+      height: min(240px, 55vw);
+      margin: 0 auto;
+    }
+
+    .emblem-wrap svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 25px rgba(245, 197, 66, 0.45));
     }
 
     .rot {
       transform-origin: 200px 200px;
-      animation: spin 40s linear infinite
+      animation: spin 45s linear infinite;
     }
 
     .rot-r {
       transform-origin: 200px 200px;
-      animation: spin 60s linear infinite reverse
+      animation: spin 60s linear infinite reverse;
     }
 
     @keyframes spin {
-      to {
-        transform: rotate(360deg)
-      }
+      to { transform: rotate(360deg); }
     }
 
     .pulse {
       animation: pulse 3s ease-in-out infinite;
-      transform-origin: 200px 200px
+      transform-origin: 200px 200px;
     }
 
     @keyframes pulse {
-      50% {
-        opacity: .55;
-        transform: scale(1.06)
-      }
+      50% { opacity: .55; transform: scale(1.05); }
     }
 
-    .draw {
-      stroke-dasharray: 1400;
-      stroke-dashoffset: 1400;
-      animation: draw 4s ease forwards
-    }
-
-    @keyframes draw {
-      to {
-        stroke-dashoffset: 0
-      }
-    }
-
-    .hero h1 {
-      font-size: clamp(2.1rem, 5.5vw, 4.2rem);
-      margin-top: 1.25rem;
+    .title-slide h1 {
+      font-size: clamp(2.1rem, 5.5vw, 3.8rem);
       background: linear-gradient(90deg, var(--gold2), var(--gold), #ff9d2e, var(--gold2));
       background-size: 300% 100%;
       -webkit-background-clip: text;
@@ -134,971 +252,722 @@
     }
 
     @keyframes shine {
-      to {
-        background-position: 300% 0
-      }
+      to { background-position: 300% 0; }
     }
 
-    .hero p.sub {
-      max-width: 680px;
-      margin: 1.1rem auto 0;
+    .title-slide p.subtitle {
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
       color: var(--muted);
-      font-size: clamp(0.98rem, 2vw, 1.18rem);
-      line-height: 1.55;
+      max-width: 620px;
+      line-height: 1.6;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 2rem;
+    .title-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+      width: 100%;
+      margin-top: 0.5rem;
     }
 
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: .85rem 1.8rem;
-      border: 1px solid var(--gold);
-      border-radius: 999px;
+    .feature-chip {
+      background: rgba(20, 26, 66, 0.65);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 0.85rem 0.6rem;
+      text-align: center;
+    }
+
+    .feature-chip b {
+      display: block;
       color: var(--gold);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.96rem;
-      position: relative;
-      overflow: hidden;
-      transition: .3s;
-      min-height: 48px;
+      font-size: 1.05rem;
+      margin-bottom: 0.2rem;
     }
 
-    .cta:hover,
-    .cta:active {
+    .feature-chip span {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* TITLE SLIDE (EACH OF 11 TITLES) */
+    .title-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .step-number {
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      color: #1a1300;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      box-shadow: 0 0 15px rgba(245, 197, 66, 0.35);
+      letter-spacing: 0.05em;
+    }
+
+    .type-pill {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid currentColor;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .t-serie { color: var(--cosmo); }
+    .t-filme { color: var(--red); }
+    .t-ova { color: var(--violet); }
+    .t-ona { color: var(--mint); }
+
+    .format-pill {
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+    }
+
+    .here-pill {
       background: var(--gold);
       color: #1a1300;
-      box-shadow: 0 0 30px var(--gold)
+      font-weight: 700;
+      font-size: 0.74rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      animation: pulseTag 2s infinite;
     }
 
-    .cta-secondary {
-      border-color: rgba(245, 197, 66, 0.4);
+    @keyframes pulseTag {
+      50% { box-shadow: 0 0 14px var(--gold); }
+    }
+
+    .slide-main-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .slide-main-header h2 {
+      font-size: clamp(1.6rem, 3.8vw, 2.5rem);
       color: var(--gold2);
-      background: rgba(20, 26, 66, 0.4);
+      line-height: 1.22;
     }
 
-    .cta-secondary:hover,
-    .cta-secondary:active {
-      background: rgba(245, 197, 66, 0.2);
-      color: #fff;
-      box-shadow: 0 0 20px rgba(245, 197, 66, 0.3);
+    .slide-icon {
+      flex-shrink: 0;
+      width: 54px;
+      height: 54px;
     }
 
-    .scroll-ind {
+    .slide-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* CARD PRESENTATION */
+    .slide-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: clamp(1.2rem, 3vw, 1.8rem);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      margin-top: 2rem;
-      color: var(--gold);
-      text-decoration: none;
-      animation: bob 2s ease-in-out infinite;
-      opacity: .85;
-      padding: 0.5rem;
+      gap: 1rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+      position: relative;
+      overflow: hidden;
     }
 
-    @keyframes bob {
-
-      0%,
-      100% {
-        transform: translateY(0)
-      }
-
-      50% {
-        transform: translateY(8px)
-      }
+    .slide-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
-    section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 4.5rem 1.25rem
+    .slide-desc {
+      font-size: clamp(1rem, 2.2vw, 1.18rem);
+      color: var(--text);
+      line-height: 1.6;
+      opacity: 0.95;
     }
 
-    .sec-title {
-      text-align: center;
-      margin-bottom: 2.5rem
-    }
-
-    .sec-title h2 {
-      font-size: clamp(1.75rem, 3.8vw, 2.6rem);
-      color: var(--gold)
-    }
-
-    .sec-title p {
-      color: var(--muted);
-      max-width: 640px;
-      margin: .5rem auto 0;
-      font-size: 0.98rem;
-    }
-
-    .divider {
-      display: block;
-      margin: 1rem auto 0;
-      width: 220px
-    }
-
-    /* MARATHON TRACKER BAR */
-    .tracker-box {
-      background: rgba(20, 26, 66, .75);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 1.25rem 1.5rem;
-      margin: 0 auto 2.5rem;
-      max-width: 680px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .tracker-header {
+    .slide-context {
+      background: rgba(5, 6, 15, 0.45);
+      border-left: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: 0.85rem 1.1rem;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 0.75rem;
-      font-size: 0.92rem;
+      flex-direction: column;
+      gap: 0.25rem;
     }
 
-    .tracker-title {
-      color: var(--gold2);
+    .context-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+    }
+
+    .context-text {
+      font-size: 0.95rem;
+      color: var(--text);
+      opacity: 0.9;
+    }
+
+    .slide-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding-top: 0.6rem;
+      border-top: 1px solid rgba(245, 197, 66, 0.14);
+    }
+
+    .watch-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: 10px;
+      background: rgba(20, 26, 66, 0.85);
+      border: 1px solid rgba(245, 197, 66, 0.35);
+      color: var(--text);
       font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      touch-action: manipulation;
+    }
+
+    .watch-toggle-btn:hover,
+    .watch-toggle-btn:active {
+      border-color: var(--gold);
+      color: var(--gold2);
+      background: rgba(245, 197, 66, 0.15);
+    }
+
+    .watch-toggle-btn.is-watched {
+      background: rgba(245, 197, 66, 0.2);
+      border-color: var(--gold);
+      color: var(--gold);
+      box-shadow: 0 0 16px rgba(245, 197, 66, 0.3);
+    }
+
+    .watched-tag {
+      display: none;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--mint);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .slide-card.is-watched .watched-tag {
+      display: inline-flex;
+    }
+
+    .slide-card.is-watched {
+      border-color: rgba(245, 197, 66, 0.5);
+      background: rgba(25, 33, 85, 0.82);
+    }
+
+    /* SKIP SLIDE */
+    .skip-slide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.9rem;
+      width: 100%;
+    }
+
+    .skip-box {
+      background: rgba(60, 10, 25, 0.4);
+      border: 1px solid rgba(255, 77, 109, 0.35);
+      border-radius: 14px;
+      padding: 1rem;
+      position: relative;
+    }
+
+    .skip-box h3 {
+      color: #ff8fa3;
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
       display: flex;
       align-items: center;
       gap: 0.4rem;
     }
 
-    .tracker-count {
+    .skip-box p {
       color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.45;
     }
 
-    .tracker-count strong {
-      color: var(--gold);
-      font-size: 1.05rem;
-    }
-
-    .tracker-bar {
+    /* 12 HOUSES & STATS SLIDE */
+    .houses-slide-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.65rem;
       width: 100%;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 999px;
-      overflow: hidden;
-      position: relative;
     }
 
-    .tracker-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--gold), #ff9d2e);
-      border-radius: 999px;
-      transition: width 0.4s ease;
-      box-shadow: 0 0 10px var(--gold);
-    }
-
-    /* FILTER PILLS */
-    .filter-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: center;
-      margin-bottom: 2.75rem;
-    }
-
-    .pill {
-      background: rgba(20, 26, 66, 0.65);
-      border: 1px solid var(--line);
-      color: var(--muted);
-      border-radius: 999px;
-      padding: 0.5rem 1.15rem;
-      font-size: 0.88rem;
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.25s ease;
-      touch-action: manipulation;
-      min-height: 40px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .pill:hover,
-    .pill:active,
-    .pill.active {
-      color: #1a1300;
-      background: var(--gold);
-      border-color: var(--gold);
-      box-shadow: 0 0 16px rgba(245, 197, 66, 0.45);
-    }
-
-    /* ZODIAC SNAP STRIP */
-    .zodiac-wrapper {
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding: 0.75rem 0.25rem 2.25rem;
-      scrollbar-width: thin;
-      scrollbar-color: var(--line) transparent;
-      margin: 0 -0.5rem;
-    }
-
-    .zodiac-wrapper::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .zodiac-wrapper::-webkit-scrollbar-thumb {
-      background: var(--line);
-      border-radius: 3px;
-    }
-
-    .zodiac {
-      display: flex;
-      gap: 1.1rem;
-      width: max-content;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    .sign {
-      flex: 0 0 84px;
-      height: 84px;
-      scroll-snap-align: center;
-      border: 1px solid var(--line);
-      border-radius: 50%;
+    .house-node {
+      border: 1px solid var(--card-border);
+      background: rgba(20, 26, 66, 0.6);
+      border-radius: 12px;
+      padding: 0.6rem 0.3rem;
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      font-size: 1.85rem;
-      color: var(--gold);
-      background: radial-gradient(circle, rgba(245, 197, 66, .09), transparent 70%);
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      cursor: pointer;
-      user-select: none;
+      gap: 0.2rem;
+      transition: all 0.25s ease;
     }
 
-    .sign span {
-      position: absolute;
-      bottom: -1.5rem;
-      font-size: .74rem;
+    .house-node:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 0 15px rgba(245, 197, 66, 0.3);
+    }
+
+    .house-glyph {
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+
+    .house-name {
+      font-size: 0.72rem;
       color: var(--muted);
-      font-family: system-ui;
       white-space: nowrap;
     }
 
-    .sign:hover,
-    .sign:active {
-      transform: translateY(-5px) scale(1.06);
-      box-shadow: 0 0 20px rgba(245, 197, 66, .45);
-      border-color: var(--gold);
-      background: radial-gradient(circle, rgba(245, 197, 66, .28), transparent 70%);
-    }
-
-    /* TIMELINE */
-    .timeline {
-      position: relative;
-      padding-left: 0
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      translate: -1px 0;
-      background: linear-gradient(var(--gold), var(--violet), var(--cosmo), var(--gold))
-    }
-
-    .item {
-      position: relative;
-      width: 50%;
-      padding: 0 2.5rem 3rem;
-      transition: opacity 0.3s ease;
-    }
-
-    .item.hidden {
-      display: none;
-    }
-
-    .item:nth-child(odd) {
-      left: 0;
-      text-align: right
-    }
-
-    .item:nth-child(even) {
-      left: 50%;
-      text-align: left;
-    }
-
-    .node {
-      position: absolute;
-      top: .6rem;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
+    .stats-row {
       display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 1rem;
-      color: #1a1300;
-      background: radial-gradient(circle at 35% 30%, var(--gold2), var(--gold) 55%, #b8860b);
-      box-shadow: 0 0 0 4px var(--bg), 0 0 20px var(--gold);
-      z-index: 2
-    }
-
-    .item:nth-child(odd) .node {
-      right: -24px
-    }
-
-    .item:nth-child(even) .node {
-      left: -24px
-    }
-
-    .card {
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 1.4rem 1.5rem;
-      transition: border-color .35s, box-shadow .35s, transform .35s, background .35s;
-      position: relative;
-      overflow: hidden;
-      text-align: left;
-      /* ensures card content is always easy to read left-to-right */
-    }
-
-    .card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(115deg, transparent 40%, rgba(255, 233, 163, .12) 50%, transparent 60%);
-      translate: -100% 0;
-      transition: .8s;
-      pointer-events: none;
-    }
-
-    .card:hover {
-      border-color: var(--gold);
-      box-shadow: 0 10px 35px rgba(245, 197, 66, .18);
-      transform: translateY(-3px)
-    }
-
-    .card:hover::after {
-      translate: 100% 0
-    }
-
-    .card.is-watched {
-      border-color: rgba(245, 197, 66, 0.45);
-      background: rgba(26, 34, 76, 0.78);
-    }
-
-    .card.is-watched .watch-status-badge {
-      display: inline-flex;
-    }
-
-    /* CARD HEADER (Flexbox instead of floats) */
-    .card-head {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
+      grid-template-columns: repeat(4, 1fr);
       gap: 0.8rem;
-      margin-bottom: 0.35rem;
+      width: 100%;
+      margin-top: 0.5rem;
     }
 
-    .card-title-group {
-      flex: 1;
+    .stat-pill {
+      background: rgba(20, 26, 66, 0.65);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 0.8rem 0.5rem;
+      text-align: center;
     }
 
-    .card h3 {
-      font-size: 1.28rem;
-      color: var(--gold2);
-      line-height: 1.3;
-    }
-
-    .card svg.ico {
-      width: 42px;
-      height: 42px;
-      flex-shrink: 0;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .4rem;
-      margin: .6rem 0;
-    }
-
-    .tag {
-      font-size: .75rem;
-      padding: .2rem .65rem;
-      border-radius: 999px;
-      border: 1px solid currentColor;
-      line-height: 1.3;
-    }
-
-    .t-serie {
-      color: var(--cosmo)
-    }
-
-    .t-filme {
-      color: var(--red)
-    }
-
-    .t-ova {
-      color: var(--violet)
-    }
-
-    .t-ona {
-      color: #4ee2b0
-    }
-
-    .tag.here {
-      color: #1a1300;
-      background: var(--gold);
-      border-color: var(--gold);
-      animation: pulseTag 2s infinite;
-      font-weight: 600;
-    }
-
-    @keyframes pulseTag {
-      50% {
-        box-shadow: 0 0 14px var(--gold)
-      }
-    }
-
-    .card p {
-      color: var(--text);
-      opacity: .92;
-      font-size: .95rem;
-      line-height: 1.55;
-    }
-
-    .when {
-      margin-top: .75rem;
-      font-size: .86rem;
-      color: var(--muted);
-      background: rgba(5, 6, 15, 0.35);
-      padding: 0.45rem 0.75rem;
-      border-radius: 8px;
-      border-left: 3px solid var(--gold);
-    }
-
-    .when b {
-      color: var(--gold)
-    }
-
-    /* WATCH ACTION FOOTER */
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 1rem;
-      padding-top: 0.75rem;
-      border-top: 1px solid rgba(245, 197, 66, 0.14);
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .watch-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      background: rgba(20, 26, 66, 0.6);
-      border: 1px solid rgba(245, 197, 66, 0.3);
-      color: var(--muted);
-      padding: 0.45rem 0.9rem;
-      border-radius: 8px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      touch-action: manipulation;
-    }
-
-    .watch-btn:hover,
-    .watch-btn:active {
-      border-color: var(--gold);
-      color: var(--gold2);
-      background: rgba(245, 197, 66, 0.12);
-    }
-
-    .watch-btn.is-watched {
-      background: rgba(245, 197, 66, 0.18);
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    .watch-status-badge {
-      display: none;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.75rem;
-      color: #4ee2b0;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* REVEAL ON SCROLL */
-    .reveal {
-      opacity: 0;
-      transform: translateY(35px);
-      transition: opacity .8s ease, transform .8s ease
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: none
-    }
-
-    /* SKIP (O QUE DEIXAR FORA) */
-    .skip-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem
-    }
-
-    .skip {
-      background: rgba(60, 10, 25, .35);
-      border: 1px solid rgba(255, 77, 109, .3);
-      border-radius: 16px;
-      padding: 1.3rem;
-      position: relative;
-      transition: transform .35s, border-color .35s, box-shadow .35s
-    }
-
-    .skip:hover,
-    .skip:active {
-      transform: translateY(-3px);
-      border-color: var(--red);
-      box-shadow: 0 8px 30px rgba(255, 77, 109, .22)
-    }
-
-    .skip h3 {
-      color: #ff8fa3;
-      font-size: 1.15rem;
-      padding-right: 2.2rem;
-      line-height: 1.3;
-    }
-
-    .skip p {
-      color: var(--muted);
-      font-size: .92rem;
-      margin-top: .45rem;
-      line-height: 1.5;
-    }
-
-    .skip svg {
-      position: absolute;
-      top: 1.1rem;
-      right: 1.1rem;
-      width: 28px;
-      height: 28px
-    }
-
-    /* STATS */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 1.1rem;
-      text-align: center
-    }
-
-    .stat {
-      padding: 1.5rem 1rem;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: var(--card);
-      backdrop-filter: blur(8px);
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-
-    .stat:hover {
-      border-color: var(--gold);
-      transform: translateY(-3px);
-    }
-
-    .stat .n {
-      font-size: clamp(2.2rem, 4vw, 2.8rem);
+    .stat-pill .num {
+      font-size: 1.7rem;
       font-family: Georgia, serif;
       color: var(--gold);
       font-weight: 700;
       line-height: 1.1;
-      margin-bottom: 0.3rem;
     }
 
-    .stat .l {
+    .stat-pill .lbl {
+      font-size: 0.74rem;
       color: var(--muted);
-      font-size: .9rem
     }
 
-    footer {
-      text-align: center;
-      padding: 3.5rem 1.25rem 4rem;
-      color: var(--muted);
-      font-size: .9rem;
-      border-top: 1px solid var(--line)
+    /* BOTTOM CONTROLS DOCK */
+    #bottom-dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      padding: 0 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      background: rgba(5, 6, 15, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(245, 197, 66, 0.15);
     }
 
-    footer svg {
-      width: 54px;
-      display: block;
-      margin: 0 auto 1.2rem
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      min-width: 100px;
+      height: 42px;
+      border-radius: 999px;
+      background: rgba(20, 26, 66, 0.7);
+      border: 1px solid var(--card-border);
+      color: var(--gold2);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      touch-action: manipulation;
     }
 
-    #progress {
+    .nav-btn:hover,
+    .nav-btn:active {
+      background: var(--gold);
+      color: #1a1300;
+      border-color: var(--gold);
+      box-shadow: 0 0 16px rgba(245, 197, 66, 0.4);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .dots-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      overflow-x: auto;
+      max-width: 50vw;
+      padding: 0.3rem 0;
+      scrollbar-width: none;
+    }
+
+    .dots-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .dot.active {
+      width: 20px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 8px var(--gold);
+    }
+
+    /* OVERVIEW DRAWER */
+    #drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 150;
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    #drawer-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #drawer {
       position: fixed;
       top: 0;
-      left: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--red));
-      width: 0;
-      z-index: 100;
-      box-shadow: 0 0 10px var(--gold)
+      right: 0;
+      bottom: 0;
+      width: min(420px, 88vw);
+      background: #090d24;
+      border-left: 1px solid var(--card-border);
+      z-index: 200;
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
     }
 
-    /* RESPONSIVE & MOBILE DESIGN OVERHAUL */
-    @media (max-width: 768px) {
-      section {
-        padding: 3.5rem 1.1rem;
+    #drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(245, 197, 66, 0.15);
+    }
+
+    .drawer-head h3 {
+      color: var(--gold);
+      font-size: 1.15rem;
+    }
+
+    .drawer-list {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-right: 0.25rem;
+    }
+
+    .drawer-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 0.85rem;
+      border-radius: 10px;
+      background: rgba(20, 26, 66, 0.5);
+      border: 1px solid rgba(245, 197, 66, 0.12);
+      color: var(--text);
+      cursor: pointer;
+      text-align: left;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+
+    .drawer-item:hover,
+    .drawer-item.active {
+      background: rgba(245, 197, 66, 0.15);
+      border-color: var(--gold);
+      color: var(--gold2);
+    }
+
+    .drawer-num {
+      font-family: Georgia, serif;
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 0.95rem;
+      min-width: 24px;
+    }
+
+    /* RESPONSIVE BREAKPOINTS */
+    @media (max-width: 680px) {
+      #top-bar {
+        padding: 0 0.85rem;
       }
 
-      .timeline::before {
-        left: 20px;
+      .top-center span.desktop-only {
+        display: none;
       }
 
-      .item,
-      .item:nth-child(odd),
-      .item:nth-child(even) {
-        width: 100%;
-        left: 0;
-        text-align: left;
-        padding: 0 0 2rem 3.4rem;
-        /* Reclaims 30px+ of horizontal space! */
+      #bottom-dock {
+        padding: 0 0.85rem;
       }
 
-      .item:nth-child(odd) .node,
-      .item:nth-child(even) .node {
-        left: 0;
-        right: auto;
+      .nav-btn {
+        min-width: 82px;
+        font-size: 0.82rem;
+        height: 38px;
+      }
+
+      .slide-main-header {
+        flex-direction: column-reverse;
+        gap: 0.5rem;
+      }
+
+      .slide-icon {
         width: 40px;
         height: 40px;
-        font-size: 0.95rem;
       }
 
-      .item:nth-child(odd) .tags,
-      .item:nth-child(even) .tags {
-        justify-content: flex-start;
+      .title-features {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
       }
 
-      .card {
-        padding: 1.2rem 1.2rem;
-        border-radius: 16px;
+      .houses-slide-grid {
+        grid-template-columns: repeat(4, 1fr);
       }
 
-      .card h3 {
-        font-size: 1.18rem;
-      }
-
-      .card svg.ico {
-        width: 36px;
-        height: 36px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      section {
-        padding: 3rem 0.85rem;
-      }
-
-      .hero {
-        padding: 2rem 1rem 3rem;
-      }
-
-      .hero svg.emblem {
-        width: min(260px, 74vw);
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .hero p.sub {
-        font-size: 0.95rem;
-      }
-
-      .timeline::before {
-        left: 17px;
-      }
-
-      .item,
-      .item:nth-child(odd),
-      .item:nth-child(even) {
-        padding: 0 0 1.65rem 2.8rem;
-      }
-
-      .item:nth-child(odd) .node,
-      .item:nth-child(even) .node {
-        width: 34px;
-        height: 34px;
-        font-size: 0.86rem;
-        top: 0.4rem;
-      }
-
-      .card {
-        padding: 1.05rem 1rem;
-        border-radius: 14px;
-      }
-
-      .card h3 {
-        font-size: 1.12rem;
-      }
-
-      .card svg.ico {
-        width: 32px;
-        height: 32px;
-      }
-
-      .pill {
-        padding: 0.4rem 0.9rem;
-        font-size: 0.82rem;
-        min-height: 36px;
-      }
-
-      .tracker-box {
-        padding: 1rem 1.1rem;
-      }
-
-      .stats {
+      .stats-row {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
-      }
-
-      .stat {
-        padding: 1.1rem 0.75rem;
-      }
-
-      .stat .n {
-        font-size: 2.1rem;
-      }
-    }
-
-    @media (prefers-reduced-motion:reduce) {
-
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        transition: none !important
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none
-      }
-
-      .draw {
-        stroke-dashoffset: 0
       }
     }
   </style>
 </head>
 
 <body>
-  <div id="progress"></div>
+  <!-- BACKGROUND STARFIELD -->
   <canvas id="stars" aria-hidden="true"></canvas>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-content">
-      <svg class="emblem" viewBox="0 0 400 400" role="img" aria-label="Emblema cósmico com as 12 casas do zodíaco">
-        <defs>
-          <radialGradient id="core" cx="50%" cy="50%" r="50%">
-            <stop offset="0" stop-color="#fff8dc" />
-            <stop offset=".35" stop-color="#f5c542" />
-            <stop offset="1" stop-color="#f5c542" stop-opacity="0" />
-          </radialGradient>
-          <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#ffe9a3" />
-            <stop offset=".5" stop-color="#f5c542" />
-            <stop offset="1" stop-color="#b8860b" />
-          </linearGradient>
-        </defs>
-        <circle cx="200" cy="200" r="120" fill="url(#core)" class="pulse" />
-        <g class="rot" fill="none" stroke="url(#gold)">
-          <circle cx="200" cy="200" r="185" stroke-width="2" stroke-dasharray="4 8" />
-          <circle cx="200" cy="200" r="170" stroke-width="1.5" />
-          <g id="ticks"></g>
-        </g>
-        <g class="rot-r" fill="#f5c542" font-size="22" text-anchor="middle" font-family="serif" id="glyphs"></g>
-        <!-- Pégaso estilizado: estrela/constelação -->
-        <g fill="none" stroke="#ffe9a3" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
-          <path class="draw"
-            d="M200 95 L228 170 L305 170 L243 215 L267 292 L200 245 L133 292 L157 215 L95 170 L172 170 Z" />
-        </g>
-        <g fill="#fff">
-          <circle cx="200" cy="95" r="4">
-            <animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite" />
-          </circle>
-          <circle cx="305" cy="170" r="3.5">
-            <animate attributeName="r" values="3;5;3" dur="2.4s" repeatCount="indefinite" />
-          </circle>
-          <circle cx="267" cy="292" r="3.5">
-            <animate attributeName="r" values="3;5;3" dur="1.8s" repeatCount="indefinite" />
-          </circle>
-          <circle cx="133" cy="292" r="3.5">
-            <animate attributeName="r" values="3;5;3" dur="2.2s" repeatCount="indefinite" />
-          </circle>
-          <circle cx="95" cy="170" r="3.5">
-            <animate attributeName="r" values="3;5;3" dur="2.6s" repeatCount="indefinite" />
-          </circle>
-        </g>
-      </svg>
-      <h1>Cavaleiros do Zodíaco</h1>
-      <p class="sub">O roteiro definitivo para maratonar em família: a linha clássica, os melhores filmes e os spin-offs
-        de qualidade — sem episódios enrolados.</p>
-      <div class="hero-actions">
-        <a class="cta" href="#roteiro">Queime seu cosmo ✦ Ver roteiro</a>
-        <a class="cta cta-secondary" href="#casas">♈ As 12 Casas</a>
-      </div>
-    </div>
-    <a class="scroll-ind" href="#roteiro" aria-label="Rolar para o roteiro">
-      <svg width="24" height="28" viewBox="0 0 24 28" fill="none" stroke="currentColor" stroke-width="2.5"
-        stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 4v16M5 13l7 7 7-7" />
-      </svg>
+  <!-- TOP BAR -->
+  <header id="top-bar">
+    <div id="progress-line"></div>
+    <a href="#0" class="brand" onclick="goToSlide(0); return false;">
+      <span class="brand-icon">✦</span>
+      <span>Cavaleiros</span>
     </a>
+    <div class="top-center">
+      <span class="desktop-only">Roteiro em Família</span>
+      <span class="slide-num-pill" id="slide-indicator">01 / 14</span>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" onclick="toggleDrawer()" aria-label="Abrir sumário dos slides">
+        ☰ <span>Índice</span>
+      </button>
+    </div>
   </header>
 
-  <!-- ROTEIRO RECOMENDADO -->
-  <section id="roteiro">
-    <div class="sec-title reveal">
-      <h2>Roteiro Recomendado</h2>
-      <p>Ordem cronológica ideal entre série clássica, filmes e spin-offs de alto padrão.</p>
-      <svg class="divider" viewBox="0 0 220 20" aria-hidden="true">
-        <path d="M0 10 H90 M130 10 H220" stroke="#f5c542" stroke-width="1.5" />
-        <path d="M110 2 L118 10 L110 18 L102 10Z" fill="#f5c542" />
-      </svg>
-    </div>
-
-    <!-- PAINEL DE PROGRESSO DA MARATONA -->
-    <div class="tracker-box reveal">
-      <div class="tracker-header">
-        <span class="tracker-title">⚡ Progresso da Família</span>
-        <span class="tracker-count"><strong id="tracker-completed">0</strong> de <span id="tracker-total">11</span>
-          assistidos</span>
+  <!-- DECK CONTAINER -->
+  <main id="deck">
+    <!-- SLIDE 0: CAPA / HERO -->
+    <section class="slide active title-slide" id="slide-0" aria-label="Slide inicial: Roteiro definitivo">
+      <div class="slide-inner">
+        <div class="emblem-wrap">
+          <svg viewBox="0 0 400 400" role="img" aria-label="Emblema de Pégaso">
+            <defs>
+              <radialGradient id="core" cx="50%" cy="50%" r="50%">
+                <stop offset="0" stop-color="#fff8dc" />
+                <stop offset=".35" stop-color="#f5c542" />
+                <stop offset="1" stop-color="#f5c542" stop-opacity="0" />
+              </radialGradient>
+              <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffe9a3" />
+                <stop offset=".5" stop-color="#f5c542" />
+                <stop offset="1" stop-color="#b8860b" />
+              </linearGradient>
+            </defs>
+            <circle cx="200" cy="200" r="120" fill="url(#core)" class="pulse" />
+            <g class="rot" fill="none" stroke="url(#gold)">
+              <circle cx="200" cy="200" r="185" stroke-width="2" stroke-dasharray="4 8" />
+              <circle cx="200" cy="200" r="170" stroke-width="1.5" />
+              <g id="ticks"></g>
+            </g>
+            <g class="rot-r" fill="#f5c542" font-size="22" text-anchor="middle" font-family="serif" id="glyphs"></g>
+            <g fill="none" stroke="#ffe9a3" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M200 95 L228 170 L305 170 L243 215 L267 292 L200 245 L133 292 L157 215 L95 170 L172 170 Z" />
+            </g>
+          </svg>
+        </div>
+        <div>
+          <h1>Cavaleiros do Zodíaco</h1>
+          <p class="subtitle">O roteiro definitivo para maratonar em família, apresentado título a título em slides.</p>
+        </div>
+        <div class="title-features">
+          <div class="feature-chip">
+            <b>11 Títulos</b>
+            <span>Série clássica, filmes & spin-offs</span>
+          </div>
+          <div class="feature-chip">
+            <b>100% Curado</b>
+            <span>Sem fillers ou episódios enrolados</span>
+          </div>
+          <div class="feature-chip">
+            <b>Interativo</b>
+            <span>Marque e acompanhe o progresso</span>
+          </div>
+        </div>
+        <div style="margin-top:0.5rem">
+          <button class="nav-btn" style="min-width:180px; height:46px; background:var(--gold); color:#1a1300; font-weight:700" onclick="nextSlide()">
+            Iniciar Apresentação ✦
+          </button>
+        </div>
       </div>
-      <div class="tracker-bar">
-        <div class="tracker-fill" id="tracker-fill" style="width: 0%"></div>
-      </div>
-    </div>
+    </section>
 
-    <!-- FILTROS -->
-    <div class="filter-pills reveal" role="tablist" aria-label="Filtrar tipo de título">
-      <button class="pill active" data-filter="all">✦ Todos (11)</button>
-      <button class="pill" data-filter="serie">📺 Sagas Principais</button>
-      <button class="pill" data-filter="filme">🎬 Filmes Clássicos</button>
-      <button class="pill" data-filter="ova">🌌 Hades & Lost Canvas</button>
-      <button class="pill" data-filter="ona">⚔️ Alma de Ouro</button>
-    </div>
+    <!-- SLIDES 1 A 11: GERADOS VIA JS DINAMICAMENTE -->
 
-    <div class="timeline" id="timeline"></div>
-  </section>
+    <!-- SLIDE 12: O QUE DEIXAR FORA -->
+    <section class="slide" id="slide-12" aria-label="Slide 12: O que deixar fora">
+      <div class="slide-inner">
+        <div class="title-badge-row">
+          <span class="step-number" style="background:#ff4d6d; color:#fff">OPCIONAIS</span>
+          <span class="format-pill">Para evitar ou assistir sem expectativas</span>
+        </div>
+        <div class="slide-main-header">
+          <h2>O que Deixar Fora da Maratona</h2>
+        </div>
+        <div class="skip-slide-grid" id="skip-slide-content"></div>
+      </div>
+    </section>
 
-  <!-- ESTATÍSTICAS DA MARATONA -->
-  <section id="stats">
-    <div class="sec-title reveal">
-      <h2>O Cosmo em Números</h2>
-      <p>A dimensão da jornada épica dos Cavaleiros de Atena.</p>
-      <svg class="divider" viewBox="0 0 220 20" aria-hidden="true">
-        <path d="M0 10 H90 M130 10 H220" stroke="#f5c542" stroke-width="1.5" />
-        <path d="M110 2 L118 10 L110 18 L102 10Z" fill="#f5c542" />
-      </svg>
-    </div>
-    <div class="stats reveal">
-      <div class="stat">
-        <div class="n" data-count="114">0</div>
-        <div class="l">Episódios Clássicos</div>
+    <!-- SLIDE 13: AS 12 CASAS & NÚMEROS -->
+    <section class="slide" id="slide-13" aria-label="Slide 13: As 12 casas e estatísticas">
+      <div class="slide-inner">
+        <div class="title-badge-row">
+          <span class="step-number">SANTUÁRIO</span>
+          <span class="format-pill">As 12 Casas & O Cosmo em Números</span>
+        </div>
+        <div class="slide-main-header">
+          <h2>As 12 Casas do Zodíaco</h2>
+        </div>
+        <div class="houses-slide-grid" id="houses-grid"></div>
+        <div class="stats-row">
+          <div class="stat-pill"><div class="num">114</div><div class="lbl">Episódios Clássicos</div></div>
+          <div class="stat-pill"><div class="num">4</div><div class="lbl">Filmes de Época</div></div>
+          <div class="stat-pill"><div class="num">31</div><div class="lbl">OVAs de Hades</div></div>
+          <div class="stat-pill"><div class="num">11</div><div class="lbl">Títulos no Roteiro</div></div>
+        </div>
       </div>
-      <div class="stat">
-        <div class="n" data-count="4">0</div>
-        <div class="l">Filmes Clássicos</div>
-      </div>
-      <div class="stat">
-        <div class="n" data-count="31">0</div>
-        <div class="l">Episódios de Hades (OVAs)</div>
-      </div>
-      <div class="stat">
-        <div class="n" data-count="11">0</div>
-        <div class="l">Títulos no Guia</div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- DEIXAR FORA -->
-  <section>
-    <div class="sec-title reveal">
-      <h2 style="color:#ff8fa3">O que Deixar Fora</h2>
-      <p>…ou assistir somente se bater muita curiosidade sem expectativas.</p>
-      <svg class="divider" viewBox="0 0 220 20" aria-hidden="true">
-        <path d="M0 10 H90 M130 10 H220" stroke="#ff4d6d" stroke-width="1.5" />
-        <path d="M110 2 L118 10 L110 18 L102 10Z" fill="#ff4d6d" />
-      </svg>
-    </div>
-    <div class="skip-grid" id="skip"></div>
-  </section>
-
-  <footer>
-    <svg viewBox="0 0 60 60" aria-hidden="true">
-      <path d="M30 4 L37 23 L57 23 L41 35 L47 55 L30 43 L13 55 L19 35 L3 23 L23 23Z" fill="none" stroke="#f5c542"
-        stroke-width="2">
-        <animateTransform attributeName="transform" type="rotate" from="0 30 30" to="360 30 30" dur="12s"
-          repeatCount="indefinite" />
-      </path>
-    </svg>
-    Página de fã, sem fins lucrativos. <em>Saint Seiya</em> © Masami Kurumada / Toei Animation.<br>Boa maratona — e que
-    Atena proteja o sofá!
+  <!-- BOTTOM DOCK -->
+  <footer id="bottom-dock">
+    <button class="nav-btn" id="btn-prev" onclick="prevSlide()" aria-label="Slide anterior">
+      ← Anterior
+    </button>
+    <div class="dots-nav" id="dots-container" role="tablist" aria-label="Navegação por bolinhas"></div>
+    <button class="nav-btn" id="btn-next" onclick="nextSlide()" aria-label="Próximo slide">
+      Próximo →
+    </button>
   </footer>
 
+  <!-- DRAWER OVERVIEW -->
+  <div id="drawer-overlay" onclick="toggleDrawer()"></div>
+  <aside id="drawer" aria-label="Sumário de todos os slides">
+    <div class="drawer-head">
+      <h3>Sumário da Apresentação</h3>
+      <button class="icon-btn" onclick="toggleDrawer()">✕</button>
+    </div>
+    <div class="drawer-list" id="drawer-items"></div>
+  </aside>
+
   <script>
-    // ===== Dados =====
+    // ===== DADOS =====
     const icons = {
-      serie: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="9" width="40" height="28" rx="4" fill="none" stroke="#7aa8ff" stroke-width="2.5"/><path d="M16 43h16M24 37v6" stroke="#7aa8ff" stroke-width="2.5"/><path d="M20 17l10 6-10 6z" fill="#7aa8ff"><animate attributeName="opacity" values="1;.4;1" dur="1.6s" repeatCount="indefinite"/></path></svg>`,
-      filme: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#ff4d6d" stroke-width="2.5"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="3"/><g><circle cx="24" cy="13" r="4"/><circle cx="24" cy="35" r="4"/><circle cx="13" cy="24" r="4"/><circle cx="35" cy="24" r="4"/><animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="6s" repeatCount="indefinite"/></g></g></svg>`,
-      ova: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 L28 18 L42 18 L31 27 L35 42 L24 33 L13 42 L17 27 L6 18 L20 18Z" fill="none" stroke="#9b6bff" stroke-width="2.5"><animateTransform attributeName="transform" type="scale" values="1;1.06;1" dur="2s" additive="sum" repeatCount="indefinite"/></path></svg>`,
-      ona: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40 L14 14 L24 24 L34 14 L40 40Z" fill="none" stroke="#4ee2b0" stroke-width="2.5" stroke-linejoin="round"/><circle cx="14" cy="11" r="3" fill="#4ee2b0"/><circle cx="34" cy="11" r="3" fill="#4ee2b0"/><circle cx="24" cy="21" r="3" fill="#4ee2b0"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle></svg>`
+      serie: `<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="9" width="40" height="28" rx="4" fill="none" stroke="#7aa8ff" stroke-width="2.5"/><path d="M16 43h16M24 37v6" stroke="#7aa8ff" stroke-width="2.5"/><path d="M20 17l10 6-10 6z" fill="#7aa8ff"><animate attributeName="opacity" values="1;.4;1" dur="1.6s" repeatCount="indefinite"/></path></svg>`,
+      filme: `<svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#ff4d6d" stroke-width="2.5"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="3"/><g><circle cx="24" cy="13" r="4"/><circle cx="24" cy="35" r="4"/><circle cx="13" cy="24" r="4"/><circle cx="35" cy="24" r="4"/><animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="6s" repeatCount="indefinite"/></g></g></svg>`,
+      ova: `<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 L28 18 L42 18 L31 27 L35 42 L24 33 L13 42 L17 27 L6 18 L20 18Z" fill="none" stroke="#9b6bff" stroke-width="2.5"><animateTransform attributeName="transform" type="scale" values="1;1.06;1" dur="2s" additive="sum" repeatCount="indefinite"/></path></svg>`,
+      ona: `<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40 L14 14 L24 24 L34 14 L40 40Z" fill="none" stroke="#4ee2b0" stroke-width="2.5" stroke-linejoin="round"/><circle cx="14" cy="11" r="3" fill="#4ee2b0"/><circle cx="34" cy="11" r="3" fill="#4ee2b0"/><circle cx="24" cy="21" r="3" fill="#4ee2b0"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle></svg>`
     };
 
     const roteiro = [
-      { id: "santuario", t: "Saga do Santuário", here: true, k: "serie", f: "Série clássica · ep. 1 a 73", p: "O coração da franquia: torneio galáctico, cavaleiros negros/prata e a subida inesquecível das 12 Casas.", w: "Ponto de partida oficial da jornada." },
-      { id: "filme-eris", t: "Filme 1: O Santo Guerreiro (Éris)", k: "filme", f: "Filme · 45 min", p: "Rápido, divertido e nostálgico; Seiya e os amigos enfrentam a Deusa da Discórdia.", w: "Logo após as 12 Casas (sessão leve de transição)." },
-      { id: "filme-asgard", t: "Filme 2: A Grande Batalha dos Deuses", k: "filme", f: "Filme · 45 min", p: "Batalha na neve contra guerreiros de Asgard; serviu de protótipo visual para a saga seguinte.", w: "Logo antes de iniciar a Saga de Asgard." },
-      { id: "saga-asgard", t: "Saga de Asgard", k: "serie", f: "Série clássica · ep. 74 a 99", p: "Apesar de não existir no mangá, tem os Guerreiros Deuses com as histórias de fundo mais dramáticas e bem escritas do anime.", w: "Sequência direta do Santuário." },
-      { id: "saga-poseidon", t: "Saga de Poseidon", k: "serie", f: "Série clássica · ep. 100 a 114", p: "Conflito nos pilares dos sete mares contra os Generais Marinas; encerra a era de ouro exibida na TV Manchete.", w: "Logo após Asgard." },
-      { id: "filme-abel", t: "Filme 3: A Lenda dos Defensores de Atena (Abel)", k: "filme", f: "Filme · 75 min", p: "O ápice técnico do traço de Shingo Araki: Cavaleiros de Ouro ressuscitados, ritmo dinâmico e trilha sonora impecável.", w: "Logo após Poseidon (melhor filme da franquia)." },
-      { id: "filme-lucifer", t: "Filme 4: Os Guerreiros do Armagedon (Lúcifer)", k: "filme", f: "Filme · 45 min", p: "Filme curto e sombrio; encerra o ciclo de longas clássicos dos anos 80/90.", w: "Opcional, antes de entrar na fase Hades." },
-      { id: "hades-santuario", t: "Saga de Hades: Santuário", k: "ova", f: "OVA · 13 episódios", p: "O ápice da animação moderna remasterizada; foco total nas lutas táticas e dramas profundos dos Cavaleiros de Ouro.", w: "Imediatamente após Poseidon / Abel." },
-      { id: "hades-inferno-eliseos", t: "Saga de Hades: Inferno e Elíseos", k: "ova", f: "OVA · 18 episódios", p: "Encerramento definitivo da história clássica original, levando a guerra santa até o coração do Submundo.", w: "Sequência direta de Hades Santuário." },
-      { id: "soul-of-gold", t: "Alma de Ouro (Soul of Gold)", k: "ona", f: "Série/ONA · 13 episódios", p: "Foca exclusivamente nos 12 Cavaleiros de Ouro com armaduras divinas em Asgard.", w: "Após o ep. 12 de Hades Inferno (ou após concluir Hades)." },
-      { id: "lost-canvas", t: "The Lost Canvas", k: "ova", f: "Série de OVAs · 26 episódios", p: "A Guerra Santa anterior (século XVIII); animação da TMS muito acima da média e Cavaleiros de Ouro em momentos lendários.", w: "Assistir como prequela independente após terminar o clássico." }
+      { id: "santuario", t: "Saga do Santuário", here: true, k: "serie", f: "Série clássica · ep. 1 a 73", p: "O coração da franquia: torneio galáctico, cavaleiros negros e de prata, culminando na subida inesquecível das 12 Casas do Zodíaco.", w: "Ponto de partida oficial e fundamental para toda a jornada." },
+      { id: "filme-eris", t: "Filme 1: O Santo Guerreiro (Éris)", k: "filme", f: "Filme · 45 min", p: "Rápido, nostálgico e divertido; Seiya e os amigos enfrentam os Cavaleiros Fantasmas sob o comando da Deusa da Discórdia.", w: "Logo após as 12 Casas (sessão leve de transição antes de Asgard)." },
+      { id: "filme-asgard", t: "Filme 2: A Grande Batalha dos Deuses", k: "filme", f: "Filme · 45 min", p: "Batalha nas terras congeladas contra os guerreiros de Durval; serviu de protótipo visual e conceitual para a saga seguinte.", w: "Logo antes de iniciar a Saga de Asgard." },
+      { id: "saga-asgard", t: "Saga de Asgard", k: "serie", f: "Série clássica · ep. 74 a 99", p: "Apesar de não existir no mangá, tem os Guerreiros Deuses com as histórias dramáticas mais profundas e bem escritas da animação.", w: "Sequência direta do Santuário (continuidade recomendada)." },
+      { id: "saga-poseidon", t: "Saga de Poseidon", k: "serie", f: "Série clássica · ep. 100 a 114", p: "Conflito subaquático pelos pilares dos sete mares contra os Generais Marinas; encerra a era de ouro exibida na TV Manchete.", w: "Logo após Asgard." },
+      { id: "filme-abel", t: "Filme 3: A Lenda dos Defensores de Atena (Abel)", k: "filme", f: "Filme · 75 min", p: "O ápice técnico do traço clássico de Shingo Araki: Cavaleiros de Ouro ressuscitados, ritmo ágil e trilha sonora magistral de Seiji Yokoyama.", w: "Logo após Poseidon (o melhor momento para assistir ao melhor filme)." },
+      { id: "filme-lucifer", t: "Filme 4: Os Guerreiros do Armagedon (Lúcifer)", k: "filme", f: "Filme · 45 min", p: "Filme curto e sombrio; encerra o ciclo de longas clássicos dos anos 80 e 90 com a vitória sobre o anjo caído.", w: "Opcional, logo antes de entrar na Saga de Hades." },
+      { id: "hades-santuario", t: "Saga de Hades: Santuário", k: "ova", f: "OVA · 13 episódios", p: "O auge da animação remasterizada; foco total nas lutas táticas, sacrifícios e dramas profundos dos Cavaleiros de Ouro.", w: "Imediatamente após Poseidon / Abel." },
+      { id: "hades-inferno-eliseos", t: "Saga de Hades: Inferno e Elíseos", k: "ova", f: "OVA · 18 episódios", p: "Encerramento definitivo da história clássica original, levando a guerra santa até os Campos Elíseos e o despertar final de Atena.", w: "Sequência direta de Hades Santuário." },
+      { id: "soul-of-gold", t: "Alma de Ouro (Soul of Gold)", k: "ona", f: "Série/ONA · 13 episódios", p: "Foca exclusivamente nos 12 Cavaleiros de Ouro despertando em Asgard com armaduras divinas douradas.", w: "Após o ep. 12 de Hades Inferno (ou após concluir Hades)." },
+      { id: "lost-canvas", t: "The Lost Canvas", k: "ova", f: "Série de OVAs · 26 episódios", p: "A Guerra Santa anterior (século XVIII); produção da TMS com padrão de arte cinematográfico e Cavaleiros de Ouro no auge de seu poder.", w: "Assistir como prequela independente após terminar o clássico." }
     ];
 
     const skip = [
-      ["Prólogo do Céu (Filme 5)", "Ritmo arrastado, tom excessivamente melancólico e pontas soltas deixadas pelo cancelamento da trilogia planejada na época."],
-      ["Omega", "Mais de 90 episódios; traço bastante infantilizado na primeira fase e muitas inconsistências com a mitologia clássica."],
-      ["Série 3D (Netflix / Crunchyroll)", "Reformulações controversas da trama (como veículos militares enfrentando cavaleiros) e ritmo acelerado que perde a dramaticidade."],
-      ["Live-action (Knights of the Zodiac, 2023)", "Adaptação ocidental com pouca fidelidade ao espírito e à estética do anime original."],
-      ["Saintia Shô", "Teve cortes expressivos de orçamento e adaptação extremamente resumida em relação ao excelente mangá."]
+      ["Prólogo do Céu (Filme 5)", "Ritmo excessivamente contemplativo e pontas soltas devido ao cancelamento da trilogia planejada na época."],
+      ["Omega", "Mais de 90 episódios; traço excessivamente infantilizado na 1ª fase e inconsistências com o cânone clássico."],
+      ["Série 3D (Netflix / Crunchyroll)", "Reformulações controversas (tanques militares contra cavaleiros) e ritmo apressado que dilui o impacto dramático."],
+      ["Live-action (Knights of the Zodiac, 2023)", "Adaptação ocidental com pouca fidelidade ao espírito, emoção e estética do anime."],
+      ["Saintia Shô", "Cortes significativos de animação e adaptação muito resumida em comparação ao excelente mangá original."]
     ];
 
     const signs = [
@@ -1109,132 +978,69 @@
 
     const labels = { serie: "Série", filme: "Filme", ova: "OVA", ona: "ONA" };
 
-    // ===== Persistência de Progresso (Local Storage) =====
-    const STORAGE_KEY = "ss_watched_ids";
-    function getWatched() {
-      try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-      } catch (e) {
-        return [];
-      }
-    }
-    function saveWatched(list) {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-      } catch (e) { }
-    }
+    // ===== RENDER DOS SLIDES 1 A 11 =====
+    const deck = document.getElementById("deck");
+    const slide12 = document.getElementById("slide-12");
 
-    function updateTrackerUI() {
-      const watched = getWatched();
-      const total = roteiro.length;
-      const count = watched.length;
-      const pct = Math.round((count / total) * 100);
+    roteiro.forEach((r, i) => {
+      const slide = document.createElement("section");
+      slide.className = "slide";
+      slide.id = `slide-${i + 1}`;
+      slide.setAttribute("aria-label", `Slide ${i + 1}: ${r.t}`);
 
-      const countEl = document.getElementById("tracker-completed");
-      const totalEl = document.getElementById("tracker-total");
-      const fillEl = document.getElementById("tracker-fill");
-
-      if (countEl) countEl.textContent = count;
-      if (totalEl) totalEl.textContent = total;
-      if (fillEl) fillEl.style.width = pct + "%";
-
-      roteiro.forEach(r => {
-        const card = document.getElementById(`card-${r.id}`);
-        const btn = document.getElementById(`btn-${r.id}`);
-        const isWatched = watched.includes(r.id);
-        if (card) {
-          card.classList.toggle("is-watched", isWatched);
-        }
-        if (btn) {
-          btn.classList.toggle("is-watched", isWatched);
-          btn.innerHTML = isWatched
-            ? `✓ Assistido`
-            : `Marcar como visto`;
-          btn.setAttribute("aria-pressed", isWatched);
-        }
-      });
-    }
-
-    window.toggleWatched = function (id) {
-      let watched = getWatched();
-      if (watched.includes(id)) {
-        watched = watched.filter(x => x !== id);
-      } else {
-        watched.push(id);
-      }
-      saveWatched(watched);
-      updateTrackerUI();
-    };
-
-    // ===== Render da Timeline =====
-    const timelineEl = document.getElementById("timeline");
-    if (timelineEl) {
-      timelineEl.innerHTML = roteiro.map((r, i) => `
-        <div class="item reveal" data-type="${r.k}" id="item-${r.id}">
-          <div class="node">${i + 1}</div>
-          <article class="card" id="card-${r.id}">
-            <div class="card-head">
-              <div class="card-title-group">
-                <h3>${r.t}</h3>
-                <div class="tags">
-                  <span class="tag t-${r.k}">${labels[r.k]}</span>
-                  <span class="tag" style="color:var(--muted)">${r.f}</span>
-                  ${r.here ? '<span class="tag here">vocês estão aqui</span>' : ''}
-                </div>
-              </div>
-              ${icons[r.k]}
+      slide.innerHTML = `
+        <div class="slide-inner">
+          <div class="title-badge-row">
+            <span class="step-number">ETAPA ${String(i + 1).padStart(2, '0')} DE 11</span>
+            <span class="type-pill t-${r.k}">${labels[r.k]}</span>
+            <span class="format-pill">${r.f}</span>
+            ${r.here ? '<span class="here-pill">vocês estão aqui</span>' : ''}
+          </div>
+          <div class="slide-main-header">
+            <h2>${r.t}</h2>
+            <div class="slide-icon">${icons[r.k]}</div>
+          </div>
+          <article class="slide-card" id="card-${r.id}">
+            <p class="slide-desc">${r.p}</p>
+            <div class="slide-context">
+              <span class="context-label">📍 Onde Encaixar na Maratona</span>
+              <span class="context-text">${r.w}</span>
             </div>
-            <p>${r.p}</p>
-            <div class="when"><b>Onde encaixar:</b> ${r.w}</div>
-            <div class="card-footer">
-              <button class="watch-btn" id="btn-${r.id}" onclick="toggleWatched('${r.id}')" aria-pressed="false">
+            <div class="slide-actions">
+              <button class="watch-toggle-btn" id="btn-${r.id}" onclick="toggleWatched('${r.id}')" aria-pressed="false">
                 Marcar como visto
               </button>
-              <span class="watch-status-badge">✦ Concluído</span>
+              <span class="watched-tag">✦ Concluído</span>
             </div>
           </article>
-        </div>`).join("");
-    }
-
-    // ===== Filtro de Categorias =====
-    const filterButtons = document.querySelectorAll(".filter-pills .pill");
-    filterButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        filterButtons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        const filter = btn.dataset.filter;
-
-        document.querySelectorAll(".timeline .item").forEach(item => {
-          if (filter === "all" || item.dataset.type === filter) {
-            item.classList.remove("hidden");
-          } else {
-            item.classList.add("hidden");
-          }
-        });
-      });
+        </div>`;
+      deck.insertBefore(slide, slide12);
     });
 
-    // ===== Render de "O que Deixar Fora" =====
-    const skipEl = document.getElementById("skip");
-    if (skipEl) {
-      const xIco = `<svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="#ff4d6d" stroke-width="2"/><path d="M10 10l10 10M20 10L10 20" stroke="#ff4d6d" stroke-width="2.5" stroke-linecap="round"/></svg>`;
-      skipEl.innerHTML = skip.map(([t, p]) => `<div class="skip reveal">${xIco}<h3>${t}</h3><p>${p}</p></div>`).join("");
-    }
-
-    // ===== Render dos Signos do Zodíaco =====
-    const zodiacEl = document.getElementById("zodiac");
-    if (zodiacEl) {
-      zodiacEl.innerHTML = signs.map(([g, n]) => `
-        <div class="sign" title="Casa de ${n}" tabindex="0" role="button" aria-label="Casa de ${n}">
-          ${g}<span>${n}</span>
+    // Render de "O que Deixar Fora" (Slide 12)
+    const skipContent = document.getElementById("skip-slide-content");
+    if (skipContent) {
+      skipContent.innerHTML = skip.map(([t, p]) => `
+        <div class="skip-box">
+          <h3>✕ ${t}</h3>
+          <p>${p}</p>
         </div>`).join("");
     }
 
-    // SVG emblem ticks & glyphs
+    // Render das 12 Casas (Slide 13)
+    const housesGrid = document.getElementById("houses-grid");
+    if (housesGrid) {
+      housesGrid.innerHTML = signs.map(([g, n]) => `
+        <div class="house-node" title="Casa de ${n}">
+          <span class="house-glyph">${g}</span>
+          <span class="house-name">${n}</span>
+        </div>`).join("");
+    }
+
+    // SVG emblem ticks & glyphs (Capa)
     const NS = "http://www.w3.org/2000/svg";
     const ticks = document.getElementById("ticks");
     const glyphs = document.getElementById("glyphs");
-
     if (ticks) {
       for (let i = 0; i < 72; i++) {
         const a = i * 5 * Math.PI / 180, r1 = i % 6 ? 163 : 155, l = document.createElementNS(NS, "line");
@@ -1246,7 +1052,6 @@
         ticks.appendChild(l);
       }
     }
-
     if (glyphs) {
       signs.forEach(([g], i) => {
         const a = (i * 30 - 90) * Math.PI / 180;
@@ -1258,57 +1063,224 @@
       });
     }
 
-    // Inicializar rastreador
-    updateTrackerUI();
+    // ===== NAVEGAÇÃO DE SLIDES =====
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const totalSlides = slides.length;
+    let currentSlide = 0;
 
-    // Reveal on scroll + Contadores Numéricos
-    const io = new IntersectionObserver(es => es.forEach(e => {
-      if (!e.isIntersecting) return;
-      e.target.classList.add("in");
-      const counters = e.target.querySelectorAll("[data-count]");
-      counters.forEach(n => {
-        if (n && !n.dataset.animated) {
-          n.dataset.animated = "true";
-          const end = +n.dataset.count, t0 = performance.now();
-          const step = t => {
-            const p = Math.min((t - t0) / 1400, 1);
-            n.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
-            if (p < 1) requestAnimationFrame(step);
-          };
-          requestAnimationFrame(step);
-        }
+    // Gerar bolinhas de navegação
+    const dotsContainer = document.getElementById("dots-container");
+    if (dotsContainer) {
+      dotsContainer.innerHTML = slides.map((_, i) => `
+        <div class="dot ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})" title="Ir para o slide ${i + 1}" role="tab" aria-selected="${i === 0}"></div>
+      `).join("");
+    }
+
+    // Gerar Drawer de Índice
+    const drawerItems = document.getElementById("drawer-items");
+    const slideTitles = [
+      "Início: Apresentação",
+      ...roteiro.map((r, i) => `#${String(i + 1).padStart(2, '0')} ${r.t}`),
+      "O que Deixar Fora",
+      "As 12 Casas & Estatísticas"
+    ];
+
+    if (drawerItems) {
+      drawerItems.innerHTML = slideTitles.map((title, i) => `
+        <button class="drawer-item ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i}); toggleDrawer();">
+          <span class="drawer-num">${String(i).padStart(2, '0')}</span>
+          <span>${title}</span>
+        </button>
+      `).join("");
+    }
+
+    function updateSlideUI() {
+      slides.forEach((s, i) => {
+        s.classList.toggle("active", i === currentSlide);
+        s.classList.toggle("prev", i < currentSlide);
+        s.setAttribute("aria-hidden", i === currentSlide ? "false" : "true");
       });
-      io.unobserve(e.target);
-    }), { threshold: .12 });
 
-    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-
-    // Barra de Progresso no Topo
-    addEventListener("scroll", () => {
-      const h = document.documentElement;
-      const progress = document.getElementById("progress");
-      if (progress) {
-        progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + "%";
+      // Indicador numérico no topo
+      const ind = document.getElementById("slide-indicator");
+      if (ind) {
+        ind.textContent = `${String(currentSlide + 1).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
       }
+
+      // Linha de progresso no topo
+      const prog = document.getElementById("progress-line");
+      if (prog) {
+        prog.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+      }
+
+      // Botões prev/next
+      const btnPrev = document.getElementById("btn-prev");
+      const btnNext = document.getElementById("btn-next");
+      if (btnPrev) btnPrev.disabled = currentSlide === 0;
+      if (btnNext) {
+        btnNext.disabled = currentSlide === totalSlides - 1;
+        btnNext.textContent = currentSlide === totalSlides - 1 ? "Fim" : "Próximo →";
+      }
+
+      // Bolinhas
+      document.querySelectorAll(".dot").forEach((d, i) => {
+        d.classList.toggle("active", i === currentSlide);
+        d.setAttribute("aria-selected", i === currentSlide);
+      });
+
+      // Item ativo no drawer
+      document.querySelectorAll(".drawer-item").forEach((it, i) => {
+        it.classList.toggle("active", i === currentSlide);
+      });
+
+      // Manter URL sincronizada
+      history.replaceState(null, '', `#${currentSlide}`);
+    }
+
+    window.goToSlide = function(idx) {
+      currentSlide = Math.max(0, Math.min(totalSlides - 1, idx));
+      updateSlideUI();
+    };
+
+    window.nextSlide = function() {
+      if (currentSlide < totalSlides - 1) {
+        goToSlide(currentSlide + 1);
+      }
+    };
+
+    window.prevSlide = function() {
+      if (currentSlide > 0) {
+        goToSlide(currentSlide - 1);
+      }
+    };
+
+    window.toggleDrawer = function() {
+      const drawer = document.getElementById("drawer");
+      const overlay = document.getElementById("drawer-overlay");
+      drawer.classList.toggle("open");
+      overlay.classList.toggle("open");
+    };
+
+    // Suporte a Teclado (Desktop)
+    document.addEventListener("keydown", e => {
+      if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(e.key)) {
+        e.preventDefault();
+        nextSlide();
+      } else if (["ArrowLeft", "ArrowUp", "PageUp", "Backspace"].includes(e.key)) {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === "Home") {
+        goToSlide(0);
+      } else if (e.key === "End") {
+        goToSlide(totalSlides - 1);
+      } else if (e.key === "Escape") {
+        const drawer = document.getElementById("drawer");
+        if (drawer.classList.contains("open")) toggleDrawer();
+      }
+    });
+
+    // Suporte a Touch Swipe (Mobile)
+    let touchStartX = null;
+    let touchStartY = null;
+
+    document.addEventListener("touchstart", e => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
     }, { passive: true });
 
-    // Fundo Estelar Cósmico
+    document.addEventListener("touchend", e => {
+      if (touchStartX === null || touchStartY === null) return;
+      const dx = e.changedTouches[0].screenX - touchStartX;
+      const dy = e.changedTouches[0].screenY - touchStartY;
+
+      // Priorizar swipe horizontal se o movimento em X for muito maior que em Y
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        if (dx < 0) nextSlide();
+        else prevSlide();
+      }
+      touchStartX = null;
+      touchStartY = null;
+    }, { passive: true });
+
+    // Suporte a Hash de URL (#0, #1, etc)
+    function checkHash() {
+      const h = window.location.hash.slice(1);
+      if (h !== "") {
+        const n = parseInt(h, 10);
+        if (!isNaN(n) && n >= 0 && n < totalSlides) {
+          goToSlide(n);
+          return;
+        }
+      }
+      goToSlide(0);
+    }
+    window.addEventListener("hashchange", checkHash);
+
+    // ===== PERSISTÊNCIA DE PROGRESSO =====
+    const STORAGE_KEY = "ss_watched_ids";
+    function getWatched() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveWatched(list) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      } catch (e) {}
+    }
+
+    function updateWatchedUI() {
+      const watched = getWatched();
+      roteiro.forEach(r => {
+        const card = document.getElementById(`card-${r.id}`);
+        const btn = document.getElementById(`btn-${r.id}`);
+        const isWatched = watched.includes(r.id);
+        if (card) {
+          card.classList.toggle("is-watched", isWatched);
+        }
+        if (btn) {
+          btn.classList.toggle("is-watched", isWatched);
+          btn.innerHTML = isWatched ? `✓ Assistido` : `Marcar como visto`;
+          btn.setAttribute("aria-pressed", isWatched);
+        }
+      });
+    }
+
+    window.toggleWatched = function(id) {
+      let watched = getWatched();
+      if (watched.includes(id)) {
+        watched = watched.filter(x => x !== id);
+      } else {
+        watched.push(id);
+      }
+      saveWatched(watched);
+      updateWatchedUI();
+    };
+
+    // Inicialização
+    updateWatchedUI();
+    checkHash();
+
+    // ===== FUNDO ESTELAR CÓSMICO =====
     const c = document.getElementById("stars");
     if (c) {
       const ctx = c.getContext("2d");
       let S = [], W, H;
       const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      function resize() {
+      function resizeCanvas() {
         W = c.width = innerWidth * devicePixelRatio;
         H = c.height = innerHeight * devicePixelRatio;
         c.style.width = innerWidth + "px";
         c.style.height = innerHeight + "px";
-        S = Array.from({ length: Math.min(260, innerWidth / 4) }, () => ({
+        S = Array.from({ length: Math.min(220, innerWidth / 4) }, () => ({
           x: Math.random() * W,
           y: Math.random() * H,
-          r: Math.random() * 1.6 * devicePixelRatio + .3,
-          v: Math.random() * .25 + .05,
+          r: Math.random() * 1.5 * devicePixelRatio + .3,
+          v: Math.random() * .2 + .04,
           p: Math.random() * 6
         }));
       }
@@ -1346,8 +1318,8 @@
         requestAnimationFrame(frame);
       }
 
-      addEventListener("resize", resize);
-      resize();
+      addEventListener("resize", resizeCanvas);
+      resizeCanvas();
       requestAnimationFrame(frame);
     }
   </script>
