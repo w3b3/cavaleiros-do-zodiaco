@@ -1,281 +1,759 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cavaleiros do Zodíaco — Roteiro para Assistir em Família</title>
-<meta name="description" content="O roteiro definitivo para assistir Cavaleiros do Zodíaco em família: sagas clássicas, filmes e spin-offs de qualidade.">
-<style>
-:root{
-  --bg:#05060f; --bg2:#0b0f2a; --gold:#f5c542; --gold2:#ffe9a3; --cosmo:#7aa8ff;
-  --violet:#9b6bff; --red:#ff4d6d; --text:#e9ecff; --muted:#a3a9d1;
-  --card:rgba(20,26,66,.55); --line:rgba(245,197,66,.25);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:radial-gradient(ellipse at top,#141a4a 0%,var(--bg) 60%) fixed;color:var(--text);line-height:1.6;overflow-x:hidden}
-h1,h2,h3{font-family:Georgia,"Times New Roman",serif;letter-spacing:.02em}
-a{color:var(--gold)}
-#stars{position:fixed;inset:0;z-index:-1;pointer-events:none}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cavaleiros do Zodíaco — Roteiro para Assistir em Família</title>
+  <meta name="description"
+    content="O roteiro definitivo para assistir Cavaleiros do Zodíaco em família: sagas clássicas, filmes e spin-offs de qualidade.">
+  <style>
+    :root {
+      --bg: #05060f;
+      --bg2: #0b0f2a;
+      --gold: #f5c542;
+      --gold2: #ffe9a3;
+      --cosmo: #7aa8ff;
+      --violet: #9b6bff;
+      --red: #ff4d6d;
+      --text: #e9ecff;
+      --muted: #a3a9d1;
+      --card: rgba(20, 26, 66, .55);
+      --line: rgba(245, 197, 66, .25);
+    }
 
-/* HERO */
-.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:2rem;position:relative}
-.hero svg.emblem{width:min(340px,70vw);height:auto;filter:drop-shadow(0 0 30px rgba(245,197,66,.45))}
-.rot{transform-origin:200px 200px;animation:spin 40s linear infinite}
-.rot-r{transform-origin:200px 200px;animation:spin 60s linear infinite reverse}
-@keyframes spin{to{transform:rotate(360deg)}}
-.pulse{animation:pulse 3s ease-in-out infinite;transform-origin:200px 200px}
-@keyframes pulse{50%{opacity:.55;transform:scale(1.06)}}
-.draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 4s ease forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-.hero h1{font-size:clamp(2.2rem,6vw,4.6rem);margin-top:1rem;background:linear-gradient(90deg,var(--gold2),var(--gold),#ff9d2e,var(--gold2));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
-@keyframes shine{to{background-position:300% 0}}
-.hero p.sub{max-width:720px;margin:1rem auto 0;color:var(--muted);font-size:clamp(1rem,2vw,1.2rem)}
-.cta{display:inline-block;margin-top:2rem;padding:.9rem 2rem;border:1px solid var(--gold);border-radius:999px;color:var(--gold);text-decoration:none;font-weight:600;position:relative;overflow:hidden;transition:.3s}
-.cta:hover{background:var(--gold);color:#1a1300;box-shadow:0 0 30px var(--gold)}
-.scroll-ind{position:absolute;bottom:1.5rem;left:50%;translate:-50% 0;animation:bob 2s ease-in-out infinite;opacity:.7}
-@keyframes bob{50%{transform:translateY(10px)}}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-section{max-width:1150px;margin:0 auto;padding:5rem 1.25rem}
-.sec-title{text-align:center;margin-bottom:3rem}
-.sec-title h2{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--gold)}
-.sec-title p{color:var(--muted);max-width:680px;margin:.5rem auto 0}
-.divider{display:block;margin:1rem auto 0;width:220px}
+    html {
+      scroll-behavior: smooth
+    }
 
-/* zodiac ring */
-.zodiac{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:1rem;margin-top:1rem}
-.sign{aspect-ratio:1;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:2rem;color:var(--gold);background:radial-gradient(circle,rgba(245,197,66,.08),transparent 70%);transition:.4s;position:relative}
-.sign span{position:absolute;bottom:-1.6rem;font-size:.72rem;color:var(--muted);font-family:system-ui}
-.sign:hover{transform:translateY(-6px) scale(1.08);box-shadow:0 0 25px rgba(245,197,66,.5);background:radial-gradient(circle,rgba(245,197,66,.3),transparent 70%)}
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(ellipse at top, #141a4a 0%, var(--bg) 60%) fixed;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden
+    }
 
-/* timeline */
-.timeline{position:relative;padding-left:0}
-.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;translate:-1px 0;background:linear-gradient(var(--gold),var(--violet),var(--cosmo),var(--gold))}
-.item{position:relative;width:50%;padding:0 2.5rem 3rem}
-.item:nth-child(odd){left:0;text-align:right}
-.item:nth-child(even){left:50%}
-.node{position:absolute;top:.6rem;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#1a1300;background:radial-gradient(circle at 35% 30%,var(--gold2),var(--gold) 55%,#b8860b);box-shadow:0 0 0 4px var(--bg),0 0 20px var(--gold);z-index:2}
-.item:nth-child(odd) .node{right:-26px}
-.item:nth-child(even) .node{left:-26px}
-.card{background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:18px;padding:1.4rem 1.5rem;transition:.35s;position:relative;overflow:hidden}
-.card::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,233,163,.12) 50%,transparent 60%);translate:-100% 0;transition:.8s}
-.card:hover{border-color:var(--gold);box-shadow:0 10px 40px rgba(245,197,66,.18);transform:translateY(-4px)}
-.card:hover::after{translate:100% 0}
-.card h3{font-size:1.3rem;color:var(--gold2)}
-.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0;justify-content:inherit}
-.item:nth-child(odd) .tags{justify-content:flex-end}
-.tag{font-size:.75rem;padding:.2rem .65rem;border-radius:999px;border:1px solid currentColor}
-.t-serie{color:var(--cosmo)} .t-filme{color:var(--red)} .t-ova{color:var(--violet)} .t-ona{color:#4ee2b0}
-.tag.here{color:#1a1300;background:var(--gold);border-color:var(--gold);animation:pulseTag 2s infinite}
-@keyframes pulseTag{50%{box-shadow:0 0 14px var(--gold)}}
-.card p{color:var(--text);opacity:.9;font-size:.96rem}
-.when{margin-top:.7rem;font-size:.85rem;color:var(--muted)}
-.when b{color:var(--gold)}
-.card svg.ico{width:46px;height:46px;float:right;margin-left:.6rem}
-.item:nth-child(odd) .card svg.ico{float:left;margin:0 .6rem 0 0}
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: .02em
+    }
 
-/* reveal */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s ease}
-.reveal.in{opacity:1;transform:none}
+    a {
+      color: var(--gold)
+    }
 
-/* skip */
-.skip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
-.skip{background:rgba(60,10,25,.35);border:1px solid rgba(255,77,109,.3);border-radius:16px;padding:1.3rem;position:relative;transition:.35s}
-.skip:hover{transform:rotate(-1deg) translateY(-4px);border-color:var(--red);box-shadow:0 8px 30px rgba(255,77,109,.2)}
-.skip h3{color:#ff8fa3;font-size:1.15rem;padding-right:2.4rem}
-.skip p{color:var(--muted);font-size:.93rem;margin-top:.4rem}
-.skip svg{position:absolute;top:1rem;right:1rem;width:30px;height:30px}
+    #stars {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none
+    }
 
-/* stats */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;text-align:center}
-.stat{padding:1.5rem;border:1px solid var(--line);border-radius:16px;background:var(--card)}
-.stat .n{font-size:2.6rem;font-family:Georgia,serif;color:var(--gold);font-weight:700}
-.stat .l{color:var(--muted);font-size:.9rem}
+    /* HERO */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative
+    }
 
-footer{text-align:center;padding:3rem 1rem 4rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
-footer svg{width:60px;display:block;margin:0 auto 1rem}
+    .hero svg.emblem {
+      width: min(340px, 70vw);
+      height: auto;
+      filter: drop-shadow(0 0 30px rgba(245, 197, 66, .45))
+    }
 
-#progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--red));width:0;z-index:10;box-shadow:0 0 10px var(--gold)}
+    .rot {
+      transform-origin: 200px 200px;
+      animation: spin 40s linear infinite
+    }
 
-@media (max-width:760px){
-  .timeline::before{left:26px}
-  .item,.item:nth-child(even){width:100%;left:0;text-align:left;padding:0 0 2.5rem 4.5rem}
-  .item:nth-child(odd) .node,.item:nth-child(even) .node{left:0;right:auto}
-  .item:nth-child(odd) .tags{justify-content:flex-start}
-  .item:nth-child(odd) .card svg.ico{float:right;margin:0 0 0 .6rem}
-}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .reveal{opacity:1;transform:none}
-  .draw{stroke-dashoffset:0}
-}
-</style>
+    .rot-r {
+      transform-origin: 200px 200px;
+      animation: spin 60s linear infinite reverse
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .pulse {
+      animation: pulse 3s ease-in-out infinite;
+      transform-origin: 200px 200px
+    }
+
+    @keyframes pulse {
+      50% {
+        opacity: .55;
+        transform: scale(1.06)
+      }
+    }
+
+    .draw {
+      stroke-dasharray: 1400;
+      stroke-dashoffset: 1400;
+      animation: draw 4s ease forwards
+    }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4.6rem);
+      margin-top: 1rem;
+      background: linear-gradient(90deg, var(--gold2), var(--gold), #ff9d2e, var(--gold2));
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shine 6s linear infinite
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 300% 0
+      }
+    }
+
+    .hero p.sub {
+      max-width: 720px;
+      margin: 1rem auto 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem)
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: .9rem 2rem;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      transition: .3s
+    }
+
+    .cta:hover {
+      background: var(--gold);
+      color: #1a1300;
+      box-shadow: 0 0 30px var(--gold)
+    }
+
+    .scroll-ind {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      translate: -50% 0;
+      animation: bob 2s ease-in-out infinite;
+      opacity: .7
+    }
+
+    @keyframes bob {
+      50% {
+        transform: translateY(10px)
+      }
+    }
+
+    section {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 5rem 1.25rem
+    }
+
+    .sec-title {
+      text-align: center;
+      margin-bottom: 3rem
+    }
+
+    .sec-title h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--gold)
+    }
+
+    .sec-title p {
+      color: var(--muted);
+      max-width: 680px;
+      margin: .5rem auto 0
+    }
+
+    .divider {
+      display: block;
+      margin: 1rem auto 0;
+      width: 220px
+    }
+
+    /* zodiac ring */
+    .zodiac {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem
+    }
+
+    .sign {
+      aspect-ratio: 1;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      color: var(--gold);
+      background: radial-gradient(circle, rgba(245, 197, 66, .08), transparent 70%);
+      transition: .4s;
+      position: relative
+    }
+
+    .sign span {
+      position: absolute;
+      bottom: -1.6rem;
+      font-size: .72rem;
+      color: var(--muted);
+      font-family: system-ui
+    }
+
+    .sign:hover {
+      transform: translateY(-6px) scale(1.08);
+      box-shadow: 0 0 25px rgba(245, 197, 66, .5);
+      background: radial-gradient(circle, rgba(245, 197, 66, .3), transparent 70%)
+    }
+
+    /* timeline */
+    .timeline {
+      position: relative;
+      padding-left: 0
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      translate: -1px 0;
+      background: linear-gradient(var(--gold), var(--violet), var(--cosmo), var(--gold))
+    }
+
+    .item {
+      position: relative;
+      width: 50%;
+      padding: 0 2.5rem 3rem
+    }
+
+    .item:nth-child(odd) {
+      left: 0;
+      text-align: right
+    }
+
+    .item:nth-child(even) {
+      left: 50%
+    }
+
+    .node {
+      position: absolute;
+      top: .6rem;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #1a1300;
+      background: radial-gradient(circle at 35% 30%, var(--gold2), var(--gold) 55%, #b8860b);
+      box-shadow: 0 0 0 4px var(--bg), 0 0 20px var(--gold);
+      z-index: 2
+    }
+
+    .item:nth-child(odd) .node {
+      right: -26px
+    }
+
+    .item:nth-child(even) .node {
+      left: -26px
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.4rem 1.5rem;
+      transition: .35s;
+      position: relative;
+      overflow: hidden
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 40%, rgba(255, 233, 163, .12) 50%, transparent 60%);
+      translate: -100% 0;
+      transition: .8s
+    }
+
+    .card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 10px 40px rgba(245, 197, 66, .18);
+      transform: translateY(-4px)
+    }
+
+    .card:hover::after {
+      translate: 100% 0
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      color: var(--gold2)
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin: .6rem 0;
+      justify-content: inherit
+    }
+
+    .item:nth-child(odd) .tags {
+      justify-content: flex-end
+    }
+
+    .tag {
+      font-size: .75rem;
+      padding: .2rem .65rem;
+      border-radius: 999px;
+      border: 1px solid currentColor
+    }
+
+    .t-serie {
+      color: var(--cosmo)
+    }
+
+    .t-filme {
+      color: var(--red)
+    }
+
+    .t-ova {
+      color: var(--violet)
+    }
+
+    .t-ona {
+      color: #4ee2b0
+    }
+
+    .tag.here {
+      color: #1a1300;
+      background: var(--gold);
+      border-color: var(--gold);
+      animation: pulseTag 2s infinite
+    }
+
+    @keyframes pulseTag {
+      50% {
+        box-shadow: 0 0 14px var(--gold)
+      }
+    }
+
+    .card p {
+      color: var(--text);
+      opacity: .9;
+      font-size: .96rem
+    }
+
+    .when {
+      margin-top: .7rem;
+      font-size: .85rem;
+      color: var(--muted)
+    }
+
+    .when b {
+      color: var(--gold)
+    }
+
+    .card svg.ico {
+      width: 46px;
+      height: 46px;
+      float: right;
+      margin-left: .6rem
+    }
+
+    .item:nth-child(odd) .card svg.ico {
+      float: left;
+      margin: 0 .6rem 0 0
+    }
+
+    /* reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .9s ease, transform .9s ease
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none
+    }
+
+    /* skip */
+    .skip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem
+    }
+
+    .skip {
+      background: rgba(60, 10, 25, .35);
+      border: 1px solid rgba(255, 77, 109, .3);
+      border-radius: 16px;
+      padding: 1.3rem;
+      position: relative;
+      transition: .35s
+    }
+
+    .skip:hover {
+      transform: rotate(-1deg) translateY(-4px);
+      border-color: var(--red);
+      box-shadow: 0 8px 30px rgba(255, 77, 109, .2)
+    }
+
+    .skip h3 {
+      color: #ff8fa3;
+      font-size: 1.15rem;
+      padding-right: 2.4rem
+    }
+
+    .skip p {
+      color: var(--muted);
+      font-size: .93rem;
+      margin-top: .4rem
+    }
+
+    .skip svg {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 30px;
+      height: 30px
+    }
+
+    /* stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1rem;
+      text-align: center
+    }
+
+    .stat {
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--card)
+    }
+
+    .stat .n {
+      font-size: 2.6rem;
+      font-family: Georgia, serif;
+      color: var(--gold);
+      font-weight: 700
+    }
+
+    .stat .l {
+      color: var(--muted);
+      font-size: .9rem
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem 4rem;
+      color: var(--muted);
+      font-size: .9rem;
+      border-top: 1px solid var(--line)
+    }
+
+    footer svg {
+      width: 60px;
+      display: block;
+      margin: 0 auto 1rem
+    }
+
+    #progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--red));
+      width: 0;
+      z-index: 10;
+      box-shadow: 0 0 10px var(--gold)
+    }
+
+    @media (max-width:760px) {
+      .timeline::before {
+        left: 26px
+      }
+
+      .item,
+      .item:nth-child(even) {
+        width: 100%;
+        left: 0;
+        text-align: left;
+        padding: 0 0 2.5rem 4.5rem
+      }
+
+      .item:nth-child(odd) .node,
+      .item:nth-child(even) .node {
+        left: 0;
+        right: auto
+      }
+
+      .item:nth-child(odd) .tags {
+        justify-content: flex-start
+      }
+
+      .item:nth-child(odd) .card svg.ico {
+        float: right;
+        margin: 0 0 0 .6rem
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none
+      }
+
+      .draw {
+        stroke-dashoffset: 0
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div id="progress"></div>
-<canvas id="stars" aria-hidden="true"></canvas>
+  <div id="progress"></div>
+  <canvas id="stars" aria-hidden="true"></canvas>
 
-<!-- HERO -->
-<header class="hero">
-  <div>
-    <svg class="emblem" viewBox="0 0 400 400" role="img" aria-label="Emblema cósmico com as 12 casas do zodíaco">
-      <defs>
-        <radialGradient id="core" cx="50%" cy="50%" r="50%">
-          <stop offset="0" stop-color="#fff8dc"/><stop offset=".35" stop-color="#f5c542"/><stop offset="1" stop-color="#f5c542" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#ffe9a3"/><stop offset=".5" stop-color="#f5c542"/><stop offset="1" stop-color="#b8860b"/>
-        </linearGradient>
-      </defs>
-      <circle cx="200" cy="200" r="120" fill="url(#core)" class="pulse"/>
-      <g class="rot" fill="none" stroke="url(#gold)">
-        <circle cx="200" cy="200" r="185" stroke-width="2" stroke-dasharray="4 8"/>
-        <circle cx="200" cy="200" r="170" stroke-width="1.5"/>
-        <g id="ticks"></g>
-      </g>
-      <g class="rot-r" fill="#f5c542" font-size="22" text-anchor="middle" font-family="serif" id="glyphs"></g>
-      <!-- Pégaso estilizado: estrela/constelação -->
-      <g fill="none" stroke="#ffe9a3" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
-        <path class="draw" d="M200 95 L228 170 L305 170 L243 215 L267 292 L200 245 L133 292 L157 215 L95 170 L172 170 Z"/>
-      </g>
-      <g fill="#fff">
-        <circle cx="200" cy="95" r="4"><animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite"/></circle>
-        <circle cx="305" cy="170" r="3.5"><animate attributeName="r" values="3;5;3" dur="2.4s" repeatCount="indefinite"/></circle>
-        <circle cx="267" cy="292" r="3.5"><animate attributeName="r" values="3;5;3" dur="1.8s" repeatCount="indefinite"/></circle>
-        <circle cx="133" cy="292" r="3.5"><animate attributeName="r" values="3;5;3" dur="2.2s" repeatCount="indefinite"/></circle>
-        <circle cx="95" cy="170" r="3.5"><animate attributeName="r" values="3;5;3" dur="2.6s" repeatCount="indefinite"/></circle>
-      </g>
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <svg class="emblem" viewBox="0 0 400 400" role="img" aria-label="Emblema cósmico com as 12 casas do zodíaco">
+        <defs>
+          <radialGradient id="core" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#fff8dc" />
+            <stop offset=".35" stop-color="#f5c542" />
+            <stop offset="1" stop-color="#f5c542" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffe9a3" />
+            <stop offset=".5" stop-color="#f5c542" />
+            <stop offset="1" stop-color="#b8860b" />
+          </linearGradient>
+        </defs>
+        <circle cx="200" cy="200" r="120" fill="url(#core)" class="pulse" />
+        <g class="rot" fill="none" stroke="url(#gold)">
+          <circle cx="200" cy="200" r="185" stroke-width="2" stroke-dasharray="4 8" />
+          <circle cx="200" cy="200" r="170" stroke-width="1.5" />
+          <g id="ticks"></g>
+        </g>
+        <g class="rot-r" fill="#f5c542" font-size="22" text-anchor="middle" font-family="serif" id="glyphs"></g>
+        <!-- Pégaso estilizado: estrela/constelação -->
+        <g fill="none" stroke="#ffe9a3" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+          <path class="draw"
+            d="M200 95 L228 170 L305 170 L243 215 L267 292 L200 245 L133 292 L157 215 L95 170 L172 170 Z" />
+        </g>
+        <g fill="#fff">
+          <circle cx="200" cy="95" r="4">
+            <animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="305" cy="170" r="3.5">
+            <animate attributeName="r" values="3;5;3" dur="2.4s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="267" cy="292" r="3.5">
+            <animate attributeName="r" values="3;5;3" dur="1.8s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="133" cy="292" r="3.5">
+            <animate attributeName="r" values="3;5;3" dur="2.2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="95" cy="170" r="3.5">
+            <animate attributeName="r" values="3;5;3" dur="2.6s" repeatCount="indefinite" />
+          </circle>
+        </g>
+      </svg>
+      <h1>Cavaleiros do Zodíaco</h1>
+      <p class="sub">O roteiro definitivo para assistir em família: a linha clássica, os filmes antigos e os spin-offs
+        que realmente valem o seu cosmo — sem enrolação.</p>
+      <a class="cta" href="#roteiro">Queime seu cosmo ✦ Ver roteiro</a>
+    </div>
+    <svg class="scroll-ind" width="28" height="44" viewBox="0 0 28 44" aria-hidden="true">
+      <rect x="1" y="1" width="26" height="42" rx="13" fill="none" stroke="#f5c542" stroke-width="2" />
+      <circle cx="14" cy="12" r="4" fill="#f5c542">
+        <animate attributeName="cy" values="12;28;12" dur="2s" repeatCount="indefinite" />
+      </circle>
     </svg>
-    <h1>Cavaleiros do Zodíaco</h1>
-    <p class="sub">O roteiro definitivo para assistir em família: a linha clássica, os filmes antigos e os spin-offs que realmente valem o seu cosmo — sem enrolação.</p>
-    <a class="cta" href="#roteiro">Queime seu cosmo ✦ Ver roteiro</a>
-  </div>
-  <svg class="scroll-ind" width="28" height="44" viewBox="0 0 28 44" aria-hidden="true"><rect x="1" y="1" width="26" height="42" rx="13" fill="none" stroke="#f5c542" stroke-width="2"/><circle cx="14" cy="12" r="4" fill="#f5c542"><animate attributeName="cy" values="12;28;12" dur="2s" repeatCount="indefinite"/></circle></svg>
-</header>
+  </header>
 
-<!-- STATS -->
-<section>
-  <div class="stats">
-    <div class="stat reveal"><div class="n" data-count="11">0</div><div class="l">Etapas no roteiro</div></div>
-    <div class="stat reveal"><div class="n" data-count="114">0</div><div class="l">Episódios da série clássica</div></div>
-    <div class="stat reveal"><div class="n" data-count="4">0</div><div class="l">Filmes clássicos</div></div>
-    <div class="stat reveal"><div class="n" data-count="12">0</div><div class="l">Casas do Santuário</div></div>
-  </div>
-</section>
+  <!-- ROTEIRO -->
+  <section id="roteiro">
+    <div class="sec-title reveal">
+      <h2>Roteiro Recomendado</h2>
+      <p>Ordem equilibrada entre série clássica, filmes e spin-offs de alta qualidade de história e animação.</p>
+      <svg class="divider" viewBox="0 0 220 20" aria-hidden="true">
+        <path d="M0 10 H90 M130 10 H220" stroke="#f5c542" stroke-width="1.5" />
+        <path d="M110 2 L118 10 L110 18 L102 10Z" fill="#f5c542" />
+      </svg>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </section>
 
-<!-- 12 CASAS -->
-<section>
-  <div class="sec-title reveal">
-    <h2>As 12 Casas</h2>
-    <p>Do Carneiro aos Peixes, a subida que define a franquia.</p>
-    <svg class="divider" viewBox="0 0 220 20" aria-hidden="true"><path d="M0 10 H90 M130 10 H220" stroke="#f5c542" stroke-width="1.5"/><path d="M110 2 L118 10 L110 18 L102 10Z" fill="#f5c542"/></svg>
-  </div>
-  <div class="zodiac reveal" id="zodiac"></div>
-</section>
+  <!-- DEIXAR FORA -->
+  <section>
+    <div class="sec-title reveal">
+      <h2 style="color:#ff8fa3">O que Deixar Fora</h2>
+      <p>…ou assistir sem expectativas.</p>
+      <svg class="divider" viewBox="0 0 220 20" aria-hidden="true">
+        <path d="M0 10 H90 M130 10 H220" stroke="#ff4d6d" stroke-width="1.5" />
+        <path d="M110 2 L118 10 L110 18 L102 10Z" fill="#ff4d6d" />
+      </svg>
+    </div>
+    <div class="skip-grid" id="skip"></div>
+  </section>
 
-<!-- ROTEIRO -->
-<section id="roteiro">
-  <div class="sec-title reveal">
-    <h2>Roteiro Recomendado</h2>
-    <p>Ordem equilibrada entre série clássica, filmes e spin-offs de alta qualidade de história e animação.</p>
-    <svg class="divider" viewBox="0 0 220 20" aria-hidden="true"><path d="M0 10 H90 M130 10 H220" stroke="#f5c542" stroke-width="1.5"/><path d="M110 2 L118 10 L110 18 L102 10Z" fill="#f5c542"/></svg>
-  </div>
-  <div class="timeline" id="timeline"></div>
-</section>
+  <footer>
+    <svg viewBox="0 0 60 60" aria-hidden="true">
+      <path d="M30 4 L37 23 L57 23 L41 35 L47 55 L30 43 L13 55 L19 35 L3 23 L23 23Z" fill="none" stroke="#f5c542"
+        stroke-width="2">
+        <animateTransform attributeName="transform" type="rotate" from="0 30 30" to="360 30 30" dur="12s"
+          repeatCount="indefinite" />
+      </path>
+    </svg>
+    Página de fã, sem fins lucrativos. <em>Saint Seiya</em> © Masami Kurumada / Toei Animation.<br>Bom maratona — e que
+    Atena proteja o sofá!
+  </footer>
 
-<!-- DEIXAR FORA -->
-<section>
-  <div class="sec-title reveal">
-    <h2 style="color:#ff8fa3">O que Deixar Fora</h2>
-    <p>…ou assistir sem expectativas.</p>
-    <svg class="divider" viewBox="0 0 220 20" aria-hidden="true"><path d="M0 10 H90 M130 10 H220" stroke="#ff4d6d" stroke-width="1.5"/><path d="M110 2 L118 10 L110 18 L102 10Z" fill="#ff4d6d"/></svg>
-  </div>
-  <div class="skip-grid" id="skip"></div>
-</section>
+  <script>
+    // ===== Dados =====
+    const icons = {
+      serie: `<svg class="ico" viewBox="0 0 48 48"><rect x="4" y="9" width="40" height="28" rx="4" fill="none" stroke="#7aa8ff" stroke-width="2.5"/><path d="M16 43h16M24 37v6" stroke="#7aa8ff" stroke-width="2.5"/><path d="M20 17l10 6-10 6z" fill="#7aa8ff"><animate attributeName="opacity" values="1;.4;1" dur="1.6s" repeatCount="indefinite"/></path></svg>`,
+      filme: `<svg class="ico" viewBox="0 0 48 48"><g fill="none" stroke="#ff4d6d" stroke-width="2.5"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="3"/><g><circle cx="24" cy="13" r="4"/><circle cx="24" cy="35" r="4"/><circle cx="13" cy="24" r="4"/><circle cx="35" cy="24" r="4"/><animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="6s" repeatCount="indefinite"/></g></g></svg>`,
+      ova: `<svg class="ico" viewBox="0 0 48 48"><path d="M24 4 L28 18 L42 18 L31 27 L35 42 L24 33 L13 42 L17 27 L6 18 L20 18Z" fill="none" stroke="#9b6bff" stroke-width="2.5"><animateTransform attributeName="transform" type="scale" values="1;1.06;1" dur="2s" additive="sum" repeatCount="indefinite"/></path></svg>`,
+      ona: `<svg class="ico" viewBox="0 0 48 48"><path d="M8 40 L14 14 L24 24 L34 14 L40 40Z" fill="none" stroke="#4ee2b0" stroke-width="2.5" stroke-linejoin="round"/><circle cx="14" cy="11" r="3" fill="#4ee2b0"/><circle cx="34" cy="11" r="3" fill="#4ee2b0"/><circle cx="24" cy="21" r="3" fill="#4ee2b0"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle></svg>`
+    };
+    const roteiro = [
+      { t: "Saga do Santuário", here: true, k: "serie", f: "Série clássica · ep. 1 a 73", p: "O coração da franquia: torneio galáctico, cavaleiros negros/prata e a subida das 12 Casas.", w: "Ponto de partida." },
+      { t: "Filme 1: O Santo Guerreiro (Éris)", k: "filme", f: "Filme · 45 min", p: "Rápido, divertido e nostálgico; Seiya e os amigos enfrentam a Deusa da Discórdia.", w: "Logo após as 12 Casas (sessão de transição)." },
+      { t: "Filme 2: A Grande Batalha dos Deuses", k: "filme", f: "Filme · 45 min", p: "Batalha na neve contra guerreiros de Asgard; serviu de protótipo visual para a saga seguinte.", w: "Logo antes de iniciar Asgard." },
+      { t: "Saga de Asgard", k: "serie", f: "Série clássica · ep. 74 a 99", p: "Apesar de não existir no mangá, tem os Guerreiros Deuses com as histórias de fundo mais dramáticas e bem escritas do anime.", w: "Sequência direta do Santuário." },
+      { t: "Saga de Poseidon", k: "serie", f: "Série clássica · ep. 100 a 114", p: "Conflito no fundo do mar contra os Generais Marinas; encerra a era exibida na TV Manchete nos anos 90.", w: "Logo após Asgard." },
+      { t: "Filme 3: A Lenda dos Defensores de Atena (Abel)", k: "filme", f: "Filme · 75 min", p: "O ápice técnico do traço clássico de Shingo Araki; Cavaleiros de Ouro ressuscitados, batalhas dinâmicas e trilha sonora impecável.", w: "Logo após Poseidon (melhor momento para assistir)." },
+      { t: "Filme 4: Os Guerreiros do Armagedon (Lúcifer)", k: "filme", f: "Filme · 45 min", p: "Filme curto e sombrio; encerra o ciclo de longas clássicos dos anos 80/90.", w: "Opcional, antes de Hades." },
+      { t: "Saga de Hades: Santuário", k: "ova", f: "OVA · 13 episódios", p: "O auge da animação clássica remasterizada; foco massivo nas lutas táticas e dramas dos Cavaleiros de Ouro.", w: "Imediatamente após Poseidon / filmes clássicos." },
+      { t: "Saga de Hades: Inferno e Elíseos", k: "ova", f: "OVA · 18 episódios (12 Inferno + 6 Elíseos)", p: "Encerramento definitivo da história clássica original, levando a batalha até a morada final de Hades.", w: "Sequência de Hades Santuário." },
+      { t: "Alma de Ouro (Soul of Gold)", k: "ona", f: "Série/ONA · 13 episódios", p: "A série que você começou: foca exclusivamente nos 12 Cavaleiros de Ouro com armaduras divinas em Asgard.", w: "Após o episódio 12 de Hades Inferno (ou após concluir Hades)." },
+      { t: "The Lost Canvas", k: "ova", f: "Série de OVAs · 26 episódios", p: "A Guerra Santa anterior (século XVIII); animação da TMS muito acima da média, Cavaleiros de Ouro com atuações de destaque e narrativa envolvente.", w: "Assistir como prequela independente após terminar o clássico." }
+    ];
+    const skip = [
+      ["Prólogo do Céu (Filme 5)", "Ritmo lento, tom excessivamente melancólico e pontas soltas deixadas pelo cancelamento da trilogia planejada na época."],
+      ["Omega", "Mais de 90 episódios; traço bastante infantilizado na primeira fase e muitas inconsistências com a mitologia original."],
+      ["Série 3D (Netflix / Crunchyroll)", "Reformulações controversas da trama (como veículos militares enfrentando cavaleiros) e ritmo acelerado que perde o impacto dramático do original."],
+      ["Live-action (Knights of the Zodiac, 2023)", "Adaptação ocidental com pouca fidelidade ao espírito do anime clássico."],
+      ["Saintia Shô", "Teve cortes expressivos de orçamento e adaptação muito resumida em relação ao mangá."]
+    ];
+    const signs = [["♈", "Áries"], ["♉", "Touro"], ["♊", "Gêmeos"], ["♋", "Câncer"], ["♌", "Leão"], ["♍", "Virgem"], ["♎", "Libra"], ["♏", "Escorpião"], ["♐", "Sagitário"], ["♑", "Capricórnio"], ["♒", "Aquário"], ["♓", "Peixes"]];
+    const labels = { serie: "Série", filme: "Filme", ova: "OVA", ona: "ONA" };
 
-<footer>
-  <svg viewBox="0 0 60 60" aria-hidden="true"><path d="M30 4 L37 23 L57 23 L41 35 L47 55 L30 43 L13 55 L19 35 L3 23 L23 23Z" fill="none" stroke="#f5c542" stroke-width="2"><animateTransform attributeName="transform" type="rotate" from="0 30 30" to="360 30 30" dur="12s" repeatCount="indefinite"/></path></svg>
-  Página de fã, sem fins lucrativos. <em>Saint Seiya</em> © Masami Kurumada / Toei Animation.<br>Bom maratona — e que Atena proteja o sofá!
-</footer>
-
-<script>
-// ===== Dados =====
-const icons = {
-  serie:`<svg class="ico" viewBox="0 0 48 48"><rect x="4" y="9" width="40" height="28" rx="4" fill="none" stroke="#7aa8ff" stroke-width="2.5"/><path d="M16 43h16M24 37v6" stroke="#7aa8ff" stroke-width="2.5"/><path d="M20 17l10 6-10 6z" fill="#7aa8ff"><animate attributeName="opacity" values="1;.4;1" dur="1.6s" repeatCount="indefinite"/></path></svg>`,
-  filme:`<svg class="ico" viewBox="0 0 48 48"><g fill="none" stroke="#ff4d6d" stroke-width="2.5"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="3"/><g><circle cx="24" cy="13" r="4"/><circle cx="24" cy="35" r="4"/><circle cx="13" cy="24" r="4"/><circle cx="35" cy="24" r="4"/><animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="6s" repeatCount="indefinite"/></g></g></svg>`,
-  ova:`<svg class="ico" viewBox="0 0 48 48"><path d="M24 4 L28 18 L42 18 L31 27 L35 42 L24 33 L13 42 L17 27 L6 18 L20 18Z" fill="none" stroke="#9b6bff" stroke-width="2.5"><animateTransform attributeName="transform" type="scale" values="1;1.06;1" dur="2s" additive="sum" repeatCount="indefinite"/></path></svg>`,
-  ona:`<svg class="ico" viewBox="0 0 48 48"><path d="M8 40 L14 14 L24 24 L34 14 L40 40Z" fill="none" stroke="#4ee2b0" stroke-width="2.5" stroke-linejoin="round"/><circle cx="14" cy="11" r="3" fill="#4ee2b0"/><circle cx="34" cy="11" r="3" fill="#4ee2b0"/><circle cx="24" cy="21" r="3" fill="#4ee2b0"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle></svg>`
-};
-const roteiro = [
-  {t:"Saga do Santuário",here:true,k:"serie",f:"Série clássica · ep. 1 a 73",p:"O coração da franquia: torneio galáctico, cavaleiros negros/prata e a subida das 12 Casas.",w:"Ponto de partida."},
-  {t:"Filme 1: O Santo Guerreiro (Éris)",k:"filme",f:"Filme · 45 min",p:"Rápido, divertido e nostálgico; Seiya e os amigos enfrentam a Deusa da Discórdia.",w:"Logo após as 12 Casas (sessão de transição)."},
-  {t:"Filme 2: A Grande Batalha dos Deuses",k:"filme",f:"Filme · 45 min",p:"Batalha na neve contra guerreiros de Asgard; serviu de protótipo visual para a saga seguinte.",w:"Logo antes de iniciar Asgard."},
-  {t:"Saga de Asgard",k:"serie",f:"Série clássica · ep. 74 a 99",p:"Apesar de não existir no mangá, tem os Guerreiros Deuses com as histórias de fundo mais dramáticas e bem escritas do anime.",w:"Sequência direta do Santuário."},
-  {t:"Saga de Poseidon",k:"serie",f:"Série clássica · ep. 100 a 114",p:"Conflito no fundo do mar contra os Generais Marinas; encerra a era exibida na TV Manchete nos anos 90.",w:"Logo após Asgard."},
-  {t:"Filme 3: A Lenda dos Defensores de Atena (Abel)",k:"filme",f:"Filme · 75 min",p:"O ápice técnico do traço clássico de Shingo Araki; Cavaleiros de Ouro ressuscitados, batalhas dinâmicas e trilha sonora impecável.",w:"Logo após Poseidon (melhor momento para assistir)."},
-  {t:"Filme 4: Os Guerreiros do Armagedon (Lúcifer)",k:"filme",f:"Filme · 45 min",p:"Filme curto e sombrio; encerra o ciclo de longas clássicos dos anos 80/90.",w:"Opcional, antes de Hades."},
-  {t:"Saga de Hades: Santuário",k:"ova",f:"OVA · 13 episódios",p:"O auge da animação clássica remasterizada; foco massivo nas lutas táticas e dramas dos Cavaleiros de Ouro.",w:"Imediatamente após Poseidon / filmes clássicos."},
-  {t:"Saga de Hades: Inferno e Elíseos",k:"ova",f:"OVA · 18 episódios (12 Inferno + 6 Elíseos)",p:"Encerramento definitivo da história clássica original, levando a batalha até a morada final de Hades.",w:"Sequência de Hades Santuário."},
-  {t:"Alma de Ouro (Soul of Gold)",k:"ona",f:"Série/ONA · 13 episódios",p:"A série que você começou: foca exclusivamente nos 12 Cavaleiros de Ouro com armaduras divinas em Asgard.",w:"Após o episódio 12 de Hades Inferno (ou após concluir Hades)."},
-  {t:"The Lost Canvas",k:"ova",f:"Série de OVAs · 26 episódios",p:"A Guerra Santa anterior (século XVIII); animação da TMS muito acima da média, Cavaleiros de Ouro com atuações de destaque e narrativa envolvente.",w:"Assistir como prequela independente após terminar o clássico."}
-];
-const skip = [
-  ["Prólogo do Céu (Filme 5)","Ritmo lento, tom excessivamente melancólico e pontas soltas deixadas pelo cancelamento da trilogia planejada na época."],
-  ["Omega","Mais de 90 episódios; traço bastante infantilizado na primeira fase e muitas inconsistências com a mitologia original."],
-  ["Série 3D (Netflix / Crunchyroll)","Reformulações controversas da trama (como veículos militares enfrentando cavaleiros) e ritmo acelerado que perde o impacto dramático do original."],
-  ["Live-action (Knights of the Zodiac, 2023)","Adaptação ocidental com pouca fidelidade ao espírito do anime clássico."],
-  ["Saintia Shô","Teve cortes expressivos de orçamento e adaptação muito resumida em relação ao mangá."]
-];
-const signs = [["♈","Áries"],["♉","Touro"],["♊","Gêmeos"],["♋","Câncer"],["♌","Leão"],["♍","Virgem"],["♎","Libra"],["♏","Escorpião"],["♐","Sagitário"],["♑","Capricórnio"],["♒","Aquário"],["♓","Peixes"]];
-const labels = {serie:"Série",filme:"Filme",ova:"OVA",ona:"ONA"};
-
-// ===== Render =====
-document.getElementById("timeline").innerHTML = roteiro.map((r,i)=>`
+    // ===== Render =====
+    document.getElementById("timeline").innerHTML = roteiro.map((r, i) => `
   <div class="item reveal">
-    <div class="node">${i+1}</div>
+    <div class="node">${i + 1}</div>
     <article class="card">
       ${icons[r.k]}
       <h3>${r.t}</h3>
-      <div class="tags"><span class="tag t-${r.k}">${labels[r.k]}</span><span class="tag" style="color:var(--muted)">${r.f}</span>${r.here?'<span class="tag here">vocês estão aqui</span>':''}</div>
+      <div class="tags"><span class="tag t-${r.k}">${labels[r.k]}</span><span class="tag" style="color:var(--muted)">${r.f}</span>${r.here ? '<span class="tag here">vocês estão aqui</span>' : ''}</div>
       <p>${r.p}</p>
       <div class="when"><b>Onde encaixar:</b> ${r.w}</div>
     </article>
   </div>`).join("");
-const x = `<svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="#ff4d6d" stroke-width="2"/><path d="M10 10l10 10M20 10L10 20" stroke="#ff4d6d" stroke-width="2.5" stroke-linecap="round"/></svg>`;
-document.getElementById("skip").innerHTML = skip.map(([t,p])=>`<div class="skip reveal">${x}<h3>${t}</h3><p>${p}</p></div>`).join("");
-document.getElementById("zodiac").innerHTML = signs.map(([g,n])=>`<div class="sign" title="Casa de ${n}">${g}<span>${n}</span></div>`).join("");
+    const x = `<svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="none" stroke="#ff4d6d" stroke-width="2"/><path d="M10 10l10 10M20 10L10 20" stroke="#ff4d6d" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+    document.getElementById("skip").innerHTML = skip.map(([t, p]) => `<div class="skip reveal">${x}<h3>${t}</h3><p>${p}</p></div>`).join("");
+    document.getElementById("zodiac").innerHTML = signs.map(([g, n]) => `<div class="sign" title="Casa de ${n}">${g}<span>${n}</span></div>`).join("");
 
-// SVG emblem ticks & glyphs
-const NS="http://www.w3.org/2000/svg", ticks=document.getElementById("ticks"), glyphs=document.getElementById("glyphs");
-for(let i=0;i<72;i++){const a=i*5*Math.PI/180,r1=i%6?163:155,l=document.createElementNS(NS,"line");
-  l.setAttribute("x1",200+Math.cos(a)*r1);l.setAttribute("y1",200+Math.sin(a)*r1);l.setAttribute("x2",200+Math.cos(a)*170);l.setAttribute("y2",200+Math.sin(a)*170);l.setAttribute("stroke-width",i%6?1:2);ticks.appendChild(l);}
-signs.forEach(([g],i)=>{const a=(i*30-90)*Math.PI/180,t=document.createElementNS(NS,"text");t.setAttribute("x",200+Math.cos(a)*140);t.setAttribute("y",200+Math.sin(a)*140+8);t.textContent=g;glyphs.appendChild(t);});
+    // SVG emblem ticks & glyphs
+    const NS = "http://www.w3.org/2000/svg", ticks = document.getElementById("ticks"), glyphs = document.getElementById("glyphs");
+    for (let i = 0; i < 72; i++) {
+      const a = i * 5 * Math.PI / 180, r1 = i % 6 ? 163 : 155, l = document.createElementNS(NS, "line");
+      l.setAttribute("x1", 200 + Math.cos(a) * r1); l.setAttribute("y1", 200 + Math.sin(a) * r1); l.setAttribute("x2", 200 + Math.cos(a) * 170); l.setAttribute("y2", 200 + Math.sin(a) * 170); l.setAttribute("stroke-width", i % 6 ? 1 : 2); ticks.appendChild(l);
+    }
+    signs.forEach(([g], i) => { const a = (i * 30 - 90) * Math.PI / 180, t = document.createElementNS(NS, "text"); t.setAttribute("x", 200 + Math.cos(a) * 140); t.setAttribute("y", 200 + Math.sin(a) * 140 + 8); t.textContent = g; glyphs.appendChild(t); });
 
-// Reveal + counters
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add("in");
-  const n=e.target.querySelector("[data-count]");if(n){const end=+n.dataset.count,t0=performance.now();
-    const step=t=>{const p=Math.min((t-t0)/1400,1);n.textContent=Math.round(end*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step);}
-  io.unobserve(e.target);}),{threshold:.15});
-document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+    // Reveal + counters
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return; e.target.classList.add("in");
+      const n = e.target.querySelector("[data-count]"); if (n) {
+        const end = +n.dataset.count, t0 = performance.now();
+        const step = t => { const p = Math.min((t - t0) / 1400, 1); n.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step) }; requestAnimationFrame(step);
+      }
+      io.unobserve(e.target);
+    }), { threshold: .15 });
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-// Progress bar
-addEventListener("scroll",()=>{const h=document.documentElement;document.getElementById("progress").style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%"},{passive:true});
+    // Progress bar
+    addEventListener("scroll", () => { const h = document.documentElement; document.getElementById("progress").style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + "%" }, { passive: true });
 
-// Starfield
-const c=document.getElementById("stars"),ctx=c.getContext("2d");let S=[],W,H;
-const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
-function resize(){W=c.width=innerWidth*devicePixelRatio;H=c.height=innerHeight*devicePixelRatio;c.style.width=innerWidth+"px";c.style.height=innerHeight+"px";
-  S=Array.from({length:Math.min(260,innerWidth/4)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6*devicePixelRatio+.3,v:Math.random()*.25+.05,p:Math.random()*6}));}
-let shoot=null;
-function frame(t){ctx.clearRect(0,0,W,H);
-  for(const s of S){const a=.5+.5*Math.sin(t/700+s.p);ctx.fillStyle=`rgba(255,${230+a*25|0},${180+a*75|0},${.3+a*.7})`;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,7);ctx.fill();
-    if(!reduce){s.y+=s.v;if(s.y>H)s.y=0;}}
-  if(!reduce){if(!shoot&&Math.random()<.006)shoot={x:Math.random()*W,y:Math.random()*H*.4,l:0};
-    if(shoot){shoot.l+=14;const g=ctx.createLinearGradient(shoot.x+shoot.l,shoot.y+shoot.l*.5,shoot.x+shoot.l-140,shoot.y+shoot.l*.5-70);
-      g.addColorStop(0,"rgba(255,233,163,1)");g.addColorStop(1,"rgba(255,233,163,0)");ctx.strokeStyle=g;ctx.lineWidth=2*devicePixelRatio;ctx.beginPath();
-      ctx.moveTo(shoot.x+shoot.l,shoot.y+shoot.l*.5);ctx.lineTo(shoot.x+shoot.l-140,shoot.y+shoot.l*.5-70);ctx.stroke();if(shoot.l>600)shoot=null;}}
-  requestAnimationFrame(frame);}
-addEventListener("resize",resize);resize();requestAnimationFrame(frame);
-</script>
+    // Starfield
+    const c = document.getElementById("stars"), ctx = c.getContext("2d"); let S = [], W, H;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function resize() {
+      W = c.width = innerWidth * devicePixelRatio; H = c.height = innerHeight * devicePixelRatio; c.style.width = innerWidth + "px"; c.style.height = innerHeight + "px";
+      S = Array.from({ length: Math.min(260, innerWidth / 4) }, () => ({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.6 * devicePixelRatio + .3, v: Math.random() * .25 + .05, p: Math.random() * 6 }));
+    }
+    let shoot = null;
+    function frame(t) {
+      ctx.clearRect(0, 0, W, H);
+      for (const s of S) {
+        const a = .5 + .5 * Math.sin(t / 700 + s.p); ctx.fillStyle = `rgba(255,${230 + a * 25 | 0},${180 + a * 75 | 0},${.3 + a * .7})`; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 7); ctx.fill();
+        if (!reduce) { s.y += s.v; if (s.y > H) s.y = 0; }
+      }
+      if (!reduce) {
+        if (!shoot && Math.random() < .006) shoot = { x: Math.random() * W, y: Math.random() * H * .4, l: 0 };
+        if (shoot) {
+          shoot.l += 14; const g = ctx.createLinearGradient(shoot.x + shoot.l, shoot.y + shoot.l * .5, shoot.x + shoot.l - 140, shoot.y + shoot.l * .5 - 70);
+          g.addColorStop(0, "rgba(255,233,163,1)"); g.addColorStop(1, "rgba(255,233,163,0)"); ctx.strokeStyle = g; ctx.lineWidth = 2 * devicePixelRatio; ctx.beginPath();
+          ctx.moveTo(shoot.x + shoot.l, shoot.y + shoot.l * .5); ctx.lineTo(shoot.x + shoot.l - 140, shoot.y + shoot.l * .5 - 70); ctx.stroke(); if (shoot.l > 600) shoot = null;
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+    addEventListener("resize", resize); resize(); requestAnimationFrame(frame);
+  </script>
 </body>
+
 </html>
