@@ -173,7 +173,8 @@
       min-height: 48px;
     }
 
-    .cta:hover, .cta:active {
+    .cta:hover,
+    .cta:active {
       background: var(--gold);
       color: #1a1300;
       box-shadow: 0 0 30px var(--gold)
@@ -185,7 +186,8 @@
       background: rgba(20, 26, 66, 0.4);
     }
 
-    .cta-secondary:hover, .cta-secondary:active {
+    .cta-secondary:hover,
+    .cta-secondary:active {
       background: rgba(245, 197, 66, 0.2);
       color: #fff;
       box-shadow: 0 0 20px rgba(245, 197, 66, 0.3);
@@ -204,9 +206,12 @@
     }
 
     @keyframes bob {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0)
       }
+
       50% {
         transform: translateY(8px)
       }
@@ -468,7 +473,8 @@
       transition: border-color .35s, box-shadow .35s, transform .35s, background .35s;
       position: relative;
       overflow: hidden;
-      text-align: left; /* ensures card content is always easy to read left-to-right */
+      text-align: left;
+      /* ensures card content is always easy to read left-to-right */
     }
 
     .card::after {
@@ -777,7 +783,8 @@
         width: 100%;
         left: 0;
         text-align: left;
-        padding: 0 0 2rem 3.4rem; /* Reclaims 30px+ of horizontal space! */
+        padding: 0 0 2rem 3.4rem;
+        /* Reclaims 30px+ of horizontal space! */
       }
 
       .item:nth-child(odd) .node,
@@ -887,6 +894,7 @@
     }
 
     @media (prefers-reduced-motion:reduce) {
+
       *,
       *::before,
       *::after {
@@ -957,33 +965,20 @@
         </g>
       </svg>
       <h1>Cavaleiros do Zodíaco</h1>
-      <p class="sub">O roteiro definitivo para maratonar em família: a linha clássica, os melhores filmes e os spin-offs de qualidade — sem episódios enrolados.</p>
+      <p class="sub">O roteiro definitivo para maratonar em família: a linha clássica, os melhores filmes e os spin-offs
+        de qualidade — sem episódios enrolados.</p>
       <div class="hero-actions">
         <a class="cta" href="#roteiro">Queime seu cosmo ✦ Ver roteiro</a>
         <a class="cta cta-secondary" href="#casas">♈ As 12 Casas</a>
       </div>
     </div>
     <a class="scroll-ind" href="#roteiro" aria-label="Rolar para o roteiro">
-      <svg width="24" height="28" viewBox="0 0 24 28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 4v16M5 13l7 7 7-7"/>
+      <svg width="24" height="28" viewBox="0 0 24 28" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 4v16M5 13l7 7 7-7" />
       </svg>
     </a>
   </header>
-
-  <!-- AS 12 CASAS DO ZODÍACO -->
-  <section id="casas">
-    <div class="sec-title reveal">
-      <h2>As 12 Casas do Zodíaco</h2>
-      <p>Deslize pelos 12 signos de ouro que guardam o caminho sagrado até a Sala do Grande Mestre.</p>
-      <svg class="divider" viewBox="0 0 220 20" aria-hidden="true">
-        <path d="M0 10 H90 M130 10 H220" stroke="#f5c542" stroke-width="1.5" />
-        <path d="M110 2 L118 10 L110 18 L102 10Z" fill="#f5c542" />
-      </svg>
-    </div>
-    <div class="zodiac-wrapper reveal">
-      <div class="zodiac" id="zodiac"></div>
-    </div>
-  </section>
 
   <!-- ROTEIRO RECOMENDADO -->
   <section id="roteiro">
@@ -1000,7 +995,8 @@
     <div class="tracker-box reveal">
       <div class="tracker-header">
         <span class="tracker-title">⚡ Progresso da Família</span>
-        <span class="tracker-count"><strong id="tracker-completed">0</strong> de <span id="tracker-total">11</span> assistidos</span>
+        <span class="tracker-count"><strong id="tracker-completed">0</strong> de <span id="tracker-total">11</span>
+          assistidos</span>
       </div>
       <div class="tracker-bar">
         <div class="tracker-fill" id="tracker-fill" style="width: 0%"></div>
@@ -1125,7 +1121,7 @@
     function saveWatched(list) {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-      } catch (e) {}
+      } catch (e) { }
     }
 
     function updateTrackerUI() {
@@ -1151,15 +1147,15 @@
         }
         if (btn) {
           btn.classList.toggle("is-watched", isWatched);
-          btn.innerHTML = isWatched 
-            ? `✓ Assistido` 
+          btn.innerHTML = isWatched
+            ? `✓ Assistido`
             : `Marcar como visto`;
           btn.setAttribute("aria-pressed", isWatched);
         }
       });
     }
 
-    window.toggleWatched = function(id) {
+    window.toggleWatched = function (id) {
       let watched = getWatched();
       if (watched.includes(id)) {
         watched = watched.filter(x => x !== id);
